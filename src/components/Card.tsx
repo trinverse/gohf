@@ -20,15 +20,15 @@ export default function Card({ title, description, icon, href, variant = 'elevat
   const content = (
     <div className={`${baseStyles} ${variants[variant]} h-full`}>
       {icon && (
-        <div className="w-12 h-12 rounded-2xl bg-[#f8f9fa] group-hover:bg-[#e8eaf6] flex items-center justify-center mb-6 transition-colors duration-500">
-          <div className="text-[#1a1a2e]">{icon}</div>
+        <div className="w-12 h-12 rounded-2xl bg-[#f8f9fa] group-hover:bg-[#E3F2FF] flex items-center justify-center mb-6 transition-colors duration-500">
+          <div className="text-[#0A84FF]">{icon}</div>
         </div>
       )}
-      <h3 className="text-xl font-semibold text-[#1a1a2e] tracking-tight">{title}</h3>
+      <h3 className="text-xl font-semibold text-[#1C1C1E] tracking-tight">{title}</h3>
       <p className="mt-3 text-[#5f6368] leading-relaxed">{description}</p>
 
       {href && (
-        <div className="mt-6 flex items-center text-sm font-medium text-[#1a1a2e]">
+        <div className="mt-6 flex items-center text-sm font-medium text-[#0A84FF]">
           <span>Learn more</span>
           <svg
             className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2"

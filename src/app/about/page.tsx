@@ -44,7 +44,7 @@ export default function About() {
         <div className="mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#1a1a2e] tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-semibold text-[#1C1C1E] tracking-tight">
                 Born from shared experiences, driven by purpose
               </h2>
               <div className="mt-8 space-y-6 text-lg text-[#5f6368] leading-relaxed">
@@ -66,10 +66,10 @@ export default function About() {
             </div>
             <div className="relative">
               <div className="sticky top-32">
-                <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-[#e8eaf6] via-[#f8f9fa] to-[#fff8e1] p-8 flex items-center justify-center">
+                <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-[#E3F2FF] via-[#f8f9fa] to-[#FFF4E0] p-8 flex items-center justify-center">
                   <div className="text-center">
                     <p className="text-sm font-medium text-[#5f6368] uppercase tracking-wide">Established</p>
-                    <p className="mt-2 text-6xl font-semibold text-[#1a1a2e]">2024</p>
+                    <p className="mt-2 text-6xl font-semibold text-[#0A84FF]">2025</p>
                   </div>
                 </div>
               </div>
@@ -83,13 +83,13 @@ export default function About() {
         <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-10 rounded-3xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-              <div className="w-12 h-12 rounded-2xl bg-[#e8eaf6] flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-[#1a1a2e]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="w-12 h-12 rounded-2xl bg-[#E3F2FF] flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-[#0A84FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-semibold text-[#1a1a2e] tracking-tight">Our Vision</h3>
+              <h3 className="text-2xl font-semibold text-[#1C1C1E] tracking-tight">Our Vision</h3>
               <p className="mt-4 text-[#5f6368] leading-relaxed">
                 A world where every deserving child has access to quality education and
                 opportunities for growth, regardless of their socio-economic background.
@@ -97,12 +97,12 @@ export default function About() {
               </p>
             </div>
             <div className="p-10 rounded-3xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-              <div className="w-12 h-12 rounded-2xl bg-[#fff8e1] flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-[#b8860b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="w-12 h-12 rounded-2xl bg-[#FFF4E0] flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-[#FF9F0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-semibold text-[#1a1a2e] tracking-tight">Our Mission</h3>
+              <h3 className="text-2xl font-semibold text-[#1C1C1E] tracking-tight">Our Mission</h3>
               <p className="mt-4 text-[#5f6368] leading-relaxed">
                 To support needy children through educational assistance, mentorship programs,
                 and skill development initiatives. We bridge the gap between potential and
@@ -117,16 +117,16 @@ export default function About() {
       <section className="py-24 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-sm font-medium text-[#b8860b] tracking-wide uppercase">What Guides Us</span>
-            <h2 className="mt-4 text-4xl font-semibold text-[#1a1a2e] tracking-tight">Our Values</h2>
+            <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">What Guides Us</span>
+            <h2 className="mt-4 text-4xl font-semibold text-[#1C1C1E] tracking-tight">Our Values</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value) => (
               <div key={value.title} className="text-center">
-                <div className="w-16 h-16 rounded-3xl bg-[#f8f9fa] flex items-center justify-center mx-auto mb-6">
-                  <div className="text-[#1a1a2e]">{value.icon}</div>
+                <div className="w-16 h-16 rounded-3xl bg-[#E3F2FF] flex items-center justify-center mx-auto mb-6">
+                  <div className="text-[#0A84FF]">{value.icon}</div>
                 </div>
-                <h3 className="text-xl font-semibold text-[#1a1a2e]">{value.title}</h3>
+                <h3 className="text-xl font-semibold text-[#1C1C1E]">{value.title}</h3>
                 <p className="mt-3 text-[#5f6368]">{value.description}</p>
               </div>
             ))}

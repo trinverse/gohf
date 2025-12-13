@@ -52,11 +52,11 @@ export default function Founders() {
               >
                 <div className="flex items-start gap-6">
                   <div className={`flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br ${founder.color} flex items-center justify-center transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3`}>
-                    <span className="text-2xl font-semibold text-[#1a1a2e]">{founder.initial}</span>
+                    <span className="text-2xl font-semibold text-[#1C1C1E]">{founder.initial}</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-2xl font-semibold text-[#1a1a2e] tracking-tight">{founder.name}</h3>
-                    <p className="mt-1 text-sm font-medium text-[#b8860b]">{founder.role}</p>
+                    <h3 className="text-2xl font-semibold text-[#1C1C1E] tracking-tight">{founder.name}</h3>
+                    <p className="mt-1 text-sm font-medium text-[#FF9F0A]">{founder.role}</p>
                     <p className="mt-4 text-[#5f6368] leading-relaxed">{founder.bio}</p>
                   </div>
                 </div>
@@ -73,8 +73,8 @@ export default function Founders() {
       {/* Shared Vision */}
       <section className="py-24 px-6 bg-[#fafafa]">
         <div className="mx-auto max-w-4xl text-center">
-          <span className="text-sm font-medium text-[#b8860b] tracking-wide uppercase">United Purpose</span>
-          <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-[#1a1a2e] tracking-tight">
+          <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">United Purpose</span>
+          <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-[#1C1C1E] tracking-tight">
             Bound by roots, driven by purpose
           </h2>
           <p className="mt-6 text-lg text-[#5f6368] leading-relaxed max-w-2xl mx-auto">
@@ -88,7 +88,7 @@ export default function Founders() {
       {/* Join CTA */}
       <section className="py-24 px-6">
         <div className="mx-auto max-w-4xl">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a1a2e] to-[#2d2d44] p-12 text-center">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0A84FF] to-[#0066CC] p-12 text-center">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
             <div className="relative">
               <h2 className="text-3xl font-semibold text-white tracking-tight">
@@ -100,7 +100,7 @@ export default function Founders() {
               </p>
               <Link
                 href="/join"
-                className="inline-flex items-center gap-2 mt-8 px-8 py-4 text-base font-medium text-[#1a1a2e] bg-white rounded-full hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center gap-2 mt-8 px-8 py-4 text-base font-medium text-[#0A84FF] bg-white rounded-full hover:shadow-xl transition-all duration-300"
               >
                 <span>Get Involved</span>
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

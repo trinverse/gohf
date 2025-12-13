@@ -38,11 +38,11 @@ export default function Header() {
             href="/"
             className="group flex items-center gap-3"
           >
-            <div className="w-10 h-10 rounded-2xl bg-[#1a1a2e] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <div className="w-10 h-10 rounded-2xl bg-[#0A84FF] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <span className="text-white font-semibold text-sm">JNV</span>
             </div>
             <div className="hidden sm:block">
-              <span className="text-[#1a1a2e] font-semibold tracking-tight">Alumni Foundation</span>
+              <span className="text-[#1C1C1E] font-semibold tracking-tight">Alumni Foundation</span>
             </div>
           </Link>
 
@@ -52,14 +52,14 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="px-4 py-2 text-sm font-medium text-[#5f6368] hover:text-[#1a1a2e] rounded-full hover:bg-[#f1f3f4] transition-all duration-300"
+                className="px-4 py-2 text-sm font-medium text-[#5f6368] hover:text-[#0A84FF] rounded-full hover:bg-[#E3F2FF] transition-all duration-300"
               >
                 {item.name}
               </Link>
             ))}
             <Link
               href="/join"
-              className="ml-4 px-6 py-2.5 text-sm font-medium text-white bg-[#1a1a2e] rounded-full hover:bg-[#2d2d44] hover:shadow-lg hover:shadow-[#1a1a2e]/20 transition-all duration-300 hover:-translate-y-0.5"
+              className="ml-4 px-6 py-2.5 text-sm font-medium text-white bg-[#0A84FF] rounded-full hover:bg-[#0066CC] hover:shadow-lg hover:shadow-[#0A84FF]/20 transition-all duration-300 hover:-translate-y-0.5"
             >
               Get Involved
             </Link>
@@ -73,9 +73,9 @@ export default function Header() {
           >
             <span className="sr-only">Open main menu</span>
             <div className="w-5 h-4 flex flex-col justify-between">
-              <span className={`block h-0.5 bg-[#1a1a2e] rounded-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
-              <span className={`block h-0.5 bg-[#1a1a2e] rounded-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-              <span className={`block h-0.5 bg-[#1a1a2e] rounded-full transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              <span className={`block h-0.5 bg-[#1C1C1E] rounded-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
+              <span className={`block h-0.5 bg-[#1C1C1E] rounded-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+              <span className={`block h-0.5 bg-[#1C1C1E] rounded-full transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </div>
           </button>
         </div>
@@ -91,7 +91,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="block px-4 py-3 text-base font-medium text-[#5f6368] hover:text-[#1a1a2e] hover:bg-[#f1f3f4] rounded-2xl transition-all duration-300"
+                className="block px-4 py-3 text-base font-medium text-[#5f6368] hover:text-[#0A84FF] hover:bg-[#E3F2FF] rounded-2xl transition-all duration-300"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
@@ -100,7 +100,7 @@ export default function Header() {
             <div className="pt-4 px-4">
               <Link
                 href="/join"
-                className="block w-full py-3 text-center text-base font-medium text-white bg-[#1a1a2e] rounded-2xl hover:bg-[#2d2d44] transition-all duration-300"
+                className="block w-full py-3 text-center text-base font-medium text-white bg-[#0A84FF] rounded-2xl hover:bg-[#0066CC] transition-all duration-300"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Get Involved

@@ -48,8 +48,8 @@ export default function Events() {
         <div className="mx-auto max-w-6xl">
           <div className="flex items-center justify-between mb-12">
             <div>
-              <span className="text-sm font-medium text-[#b8860b] tracking-wide uppercase">What&apos;s Next</span>
-              <h2 className="mt-2 text-3xl font-semibold text-[#1a1a2e] tracking-tight">Upcoming Events</h2>
+              <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">What&apos;s Next</span>
+              <h2 className="mt-2 text-3xl font-semibold text-[#1C1C1E] tracking-tight">Upcoming Events</h2>
             </div>
           </div>
 
@@ -60,12 +60,12 @@ export default function Events() {
                 className="group relative p-8 rounded-3xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-500 overflow-hidden"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <span className="px-3 py-1 text-xs font-medium text-[#1a1a2e] bg-[#f8f9fa] rounded-full">
+                  <span className="px-3 py-1 text-xs font-medium text-[#0A84FF] bg-[#E3F2FF] rounded-full">
                     {event.type}
                   </span>
                   <span className="text-sm font-medium text-[#5f6368]">{event.date}</span>
                 </div>
-                <h3 className="text-xl font-semibold text-[#1a1a2e] tracking-tight">{event.title}</h3>
+                <h3 className="text-xl font-semibold text-[#1C1C1E] tracking-tight">{event.title}</h3>
                 <p className="mt-3 text-[#5f6368]">{event.description}</p>
 
                 {/* Decorative number */}
@@ -82,15 +82,15 @@ export default function Events() {
       <section className="py-24 px-6 bg-[#fafafa]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <span className="text-sm font-medium text-[#b8860b] tracking-wide uppercase">Looking Back</span>
-            <h2 className="mt-2 text-3xl font-semibold text-[#1a1a2e] tracking-tight">Recent Highlights</h2>
+            <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">Looking Back</span>
+            <h2 className="mt-2 text-3xl font-semibold text-[#1C1C1E] tracking-tight">Recent Highlights</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {highlights.map((item) => (
               <div key={item.title} className="p-6 rounded-2xl bg-white">
-                <p className="text-sm text-[#b8860b] font-medium">{item.date}</p>
-                <h3 className="mt-2 text-lg font-semibold text-[#1a1a2e]">{item.title}</h3>
+                <p className="text-sm text-[#FF9F0A] font-medium">{item.date}</p>
+                <h3 className="mt-2 text-lg font-semibold text-[#1C1C1E]">{item.title}</h3>
                 <p className="mt-2 text-sm text-[#5f6368]">{item.students}</p>
               </div>
             ))}
@@ -101,7 +101,7 @@ export default function Events() {
       {/* CTA */}
       <section className="py-24 px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold text-[#1a1a2e] tracking-tight">
+          <h2 className="text-3xl font-semibold text-[#1C1C1E] tracking-tight">
             Want to participate?
           </h2>
           <p className="mt-4 text-lg text-[#5f6368]">
@@ -110,13 +110,13 @@ export default function Events() {
           <div className="mt-8 flex justify-center gap-4">
             <Link
               href="/join"
-              className="px-8 py-4 text-base font-medium text-white bg-[#1a1a2e] rounded-full hover:bg-[#2d2d44] transition-all duration-300"
+              className="px-8 py-4 text-base font-medium text-white bg-[#0A84FF] rounded-full hover:bg-[#0066CC] transition-all duration-300"
             >
               Get Involved
             </Link>
             <Link
               href="/contact"
-              className="px-8 py-4 text-base font-medium text-[#1a1a2e] bg-white border border-[#e8eaed] rounded-full hover:border-[#dadce0] transition-all duration-300"
+              className="px-8 py-4 text-base font-medium text-[#1C1C1E] bg-white border border-[#e8eaed] rounded-full hover:border-[#0A84FF] transition-all duration-300"
             >
               Contact Us
             </Link>

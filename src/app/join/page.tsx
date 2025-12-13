@@ -59,8 +59,8 @@ export default function Join() {
       <section className="py-16 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-sm font-medium text-[#b8860b] tracking-wide uppercase">Get Involved</span>
-            <h2 className="mt-4 text-3xl font-semibold text-[#1a1a2e] tracking-tight">Ways to Contribute</h2>
+            <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">Get Involved</span>
+            <h2 className="mt-4 text-3xl font-semibold text-[#1C1C1E] tracking-tight">Ways to Contribute</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {waysToHelp.map((way) => (
@@ -80,7 +80,7 @@ export default function Join() {
       <section className="py-24 px-6 bg-[#fafafa]">
         <div className="mx-auto max-w-2xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold text-[#1a1a2e] tracking-tight">Express Your Interest</h2>
+            <h2 className="text-3xl font-semibold text-[#1C1C1E] tracking-tight">Express Your Interest</h2>
             <p className="mt-4 text-[#5f6368]">
               Fill out the form and we&apos;ll get in touch about how you can contribute.
             </p>
@@ -89,31 +89,31 @@ export default function Join() {
           <form className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-[#1a1a2e] mb-2">
+                <label htmlFor="firstName" className="block text-sm font-medium text-[#1C1C1E] mb-2">
                   First Name
                 </label>
                 <input
                   type="text"
                   id="firstName"
-                  className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#1a1a2e] focus:ring-0 transition-colors duration-300"
+                  className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
                   placeholder="Your first name"
                 />
               </div>
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-[#1a1a2e] mb-2">
+                <label htmlFor="lastName" className="block text-sm font-medium text-[#1C1C1E] mb-2">
                   Last Name
                 </label>
                 <input
                   type="text"
                   id="lastName"
-                  className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#1a1a2e] focus:ring-0 transition-colors duration-300"
+                  className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
                   placeholder="Your last name"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-[#1a1a2e] mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-[#1C1C1E] mb-2">
                 Email
               </label>
               <input
@@ -125,7 +125,7 @@ export default function Join() {
             </div>
 
             <div>
-              <label htmlFor="interest" className="block text-sm font-medium text-[#1a1a2e] mb-2">
+              <label htmlFor="interest" className="block text-sm font-medium text-[#1C1C1E] mb-2">
                 How would you like to help?
               </label>
               <select
@@ -141,7 +141,7 @@ export default function Join() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-[#1a1a2e] mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-[#1C1C1E] mb-2">
                 Tell us about yourself
               </label>
               <textarea
@@ -154,7 +154,7 @@ export default function Join() {
 
             <button
               type="submit"
-              className="w-full py-4 text-base font-medium text-white bg-[#1a1a2e] rounded-full hover:bg-[#2d2d44] transition-all duration-300"
+              className="w-full py-4 text-base font-medium text-white bg-[#0A84FF] rounded-full hover:bg-[#0066CC] transition-all duration-300"
             >
               Submit
             </button>
@@ -169,14 +169,14 @@ export default function Join() {
       {/* Impact Stats */}
       <section className="py-24 px-6">
         <div className="mx-auto max-w-4xl">
-          <div className="p-12 rounded-3xl bg-gradient-to-br from-[#e8eaf6] to-[#f8f9fa]">
-            <h2 className="text-2xl font-semibold text-[#1a1a2e] tracking-tight text-center mb-10">
+          <div className="p-12 rounded-3xl bg-gradient-to-br from-[#E3F2FF] to-[#f8f9fa]">
+            <h2 className="text-2xl font-semibold text-[#1C1C1E] tracking-tight text-center mb-10">
               Your Impact Matters
             </h2>
             <div className="grid grid-cols-3 gap-8">
-              {stats.map((stat) => (
+              {stats.map((stat, index) => (
                 <div key={stat.label} className="text-center">
-                  <p className="text-4xl md:text-5xl font-semibold text-[#1a1a2e]">{stat.value}</p>
+                  <p className={`text-4xl md:text-5xl font-semibold ${index === 0 ? 'text-[#0A84FF]' : index === 1 ? 'text-[#FF9F0A]' : 'text-[#30D158]'}`}>{stat.value}</p>
                   <p className="mt-2 text-sm text-[#5f6368]">{stat.label}</p>
                 </div>
               ))}

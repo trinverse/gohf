@@ -62,8 +62,8 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-sm font-medium text-[#b8860b] tracking-wide uppercase">Our Purpose</span>
-              <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-[#1a1a2e] tracking-tight leading-tight">
+              <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">Our Purpose</span>
+              <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-[#1C1C1E] tracking-tight leading-tight">
                 Every child deserves a chance to thrive
               </h2>
               <p className="mt-6 text-lg text-[#5f6368] leading-relaxed">
@@ -72,7 +72,7 @@ export default function Home() {
               <div className="mt-8 flex gap-4">
                 <Link
                   href="/about"
-                  className="inline-flex items-center text-[#1a1a2e] font-medium hover:gap-3 transition-all duration-300"
+                  className="inline-flex items-center text-[#0A84FF] font-medium hover:gap-3 transition-all duration-300"
                 >
                   <span>Our Story</span>
                   <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,14 +82,14 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-[#e8eaf6] to-[#f8f9fa] flex items-center justify-center">
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-[#E3F2FF] to-[#f8f9fa] flex items-center justify-center">
                 <div className="text-center p-8">
-                  <p className="text-6xl md:text-7xl font-semibold text-[#1a1a2e]">100+</p>
+                  <p className="text-6xl md:text-7xl font-semibold text-[#0A84FF]">100+</p>
                   <p className="mt-2 text-lg text-[#5f6368]">Lives Impacted</p>
                 </div>
               </div>
               {/* Decorative element */}
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-[#fff8e1] -z-10" />
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-[#FFF4E0] -z-10" />
             </div>
           </div>
         </div>
@@ -99,8 +99,8 @@ export default function Home() {
       <section className="py-24 px-6 bg-[#fafafa]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-sm font-medium text-[#b8860b] tracking-wide uppercase">What We Do</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-[#1a1a2e] tracking-tight">
+            <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">What We Do</span>
+            <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-[#1C1C1E] tracking-tight">
               Our Initiatives
             </h2>
             <p className="mt-6 text-lg text-[#5f6368]">
@@ -125,8 +125,8 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-sm font-medium text-[#b8860b] tracking-wide uppercase">Leadership</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-[#1a1a2e] tracking-tight">
+            <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">Leadership</span>
+            <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-[#1C1C1E] tracking-tight">
               Our Founders
             </h2>
             <p className="mt-6 text-lg text-[#5f6368]">
@@ -137,12 +137,12 @@ export default function Home() {
             {founders.map((founder) => (
               <div key={founder.name} className="group text-center">
                 <div className="relative mx-auto w-32 h-32 mb-6">
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#e8eaf6] to-[#f1f3f4] rotate-6 transition-transform duration-500 group-hover:rotate-12" />
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E3F2FF] to-[#f1f3f4] rotate-6 transition-transform duration-500 group-hover:rotate-12" />
                   <div className="relative w-full h-full rounded-3xl bg-[#f8f9fa] flex items-center justify-center">
-                    <span className="text-4xl font-semibold text-[#1a1a2e]">{founder.name.charAt(0)}</span>
+                    <span className="text-4xl font-semibold text-[#0A84FF]">{founder.name.charAt(0)}</span>
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-[#1a1a2e]">{founder.name}</h3>
+                <h3 className="text-lg font-semibold text-[#1C1C1E]">{founder.name}</h3>
                 <p className="mt-1 text-sm text-[#5f6368]">{founder.role}</p>
               </div>
             ))}
@@ -150,7 +150,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Link
               href="/founders"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-[#1a1a2e] bg-white rounded-full border border-[#e8eaed] hover:border-[#dadce0] hover:shadow-lg transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-[#0A84FF] bg-white rounded-full border border-[#e8eaed] hover:border-[#0A84FF] hover:shadow-lg transition-all duration-300"
             >
               <span>Meet the Team</span>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -164,10 +164,10 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-24 px-6">
         <div className="mx-auto max-w-4xl">
-          <div className="relative overflow-hidden rounded-[2.5rem] bg-[#1a1a2e] p-12 md:p-16 text-center">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-[#0A84FF] p-12 md:p-16 text-center">
             {/* Decorative gradients */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#2d2d44] to-transparent rounded-full blur-3xl opacity-50" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-[#b8860b]/20 to-transparent rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#0066CC] to-transparent rounded-full blur-3xl opacity-50" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-[#FF9F0A]/20 to-transparent rounded-full blur-3xl" />
 
             <div className="relative">
               <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight">
@@ -179,7 +179,7 @@ export default function Home() {
               <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
                   href="/join"
-                  className="px-8 py-4 text-base font-medium text-[#1a1a2e] bg-white rounded-full hover:bg-[#f8f9fa] hover:shadow-xl transition-all duration-300"
+                  className="px-8 py-4 text-base font-medium text-[#0A84FF] bg-white rounded-full hover:bg-[#f8f9fa] hover:shadow-xl transition-all duration-300"
                 >
                   Get Involved
                 </Link>

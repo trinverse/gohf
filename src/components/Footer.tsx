@@ -18,10 +18,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-5">
             <Link href="/" className="inline-flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#1a1a2e] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-2xl bg-[#0A84FF] flex items-center justify-center">
                 <span className="text-white font-semibold text-sm">JNV</span>
               </div>
-              <span className="text-[#1a1a2e] font-semibold tracking-tight">Alumni Foundation</span>
+              <span className="text-[#1C1C1E] font-semibold tracking-tight">Alumni Foundation</span>
             </Link>
             <p className="mt-6 text-[#5f6368] leading-relaxed max-w-sm">
               An alumni-led initiative dedicated to empowering underprivileged children through education, mentorship, and community support.
@@ -33,13 +33,13 @@ export default function Footer() {
 
           {/* Links */}
           <div className="md:col-span-3 md:col-start-7">
-            <h3 className="text-sm font-semibold text-[#1a1a2e] tracking-wide uppercase">Navigation</h3>
+            <h3 className="text-sm font-semibold text-[#1C1C1E] tracking-wide uppercase">Navigation</h3>
             <ul className="mt-6 space-y-4">
               {navigation.main.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-[#5f6368] hover:text-[#1a1a2e] transition-colors duration-300"
+                    className="text-[#5f6368] hover:text-[#0A84FF] transition-colors duration-300"
                   >
                     {item.name}
                   </Link>
@@ -50,12 +50,12 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="md:col-span-4">
-            <h3 className="text-sm font-semibold text-[#1a1a2e] tracking-wide uppercase">Get in Touch</h3>
+            <h3 className="text-sm font-semibold text-[#1C1C1E] tracking-wide uppercase">Get in Touch</h3>
             <div className="mt-6 space-y-4">
               <p className="text-[#5f6368]">contact@jnvalumnifoundation.org</p>
               <Link
                 href="/join"
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-[#1a1a2e] rounded-full hover:bg-[#2d2d44] transition-all duration-300 hover:shadow-lg"
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-[#0A84FF] rounded-full hover:bg-[#0066CC] transition-all duration-300 hover:shadow-lg"
               >
                 <span>Join Our Cause</span>
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
