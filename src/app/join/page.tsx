@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Hero from '@/components/Hero'
 import Card from '@/components/Card'
 
@@ -47,6 +50,59 @@ const stats = [
 ]
 
 export default function Join() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    interest: '',
+    message: '',
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.id]: e.target.value
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/members', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          interest: '',
+          message: '',
+        })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Hero
@@ -86,51 +142,92 @@ export default function Join() {
             </p>
           </div>
 
-          <form className="space-y-6">
+          {submitStatus === 'success' && (
+            <div className="mb-8 p-4 rounded-2xl bg-[#E8FAE8] border border-[#30D158] text-center">
+              <p className="text-[#1C1C1E] font-medium">Thank you for your interest!</p>
+              <p className="text-sm text-[#5f6368] mt-1">We&apos;ll be in touch soon.</p>
+            </div>
+          )}
+
+          {submitStatus === 'error' && (
+            <div className="mb-8 p-4 rounded-2xl bg-[#FCE4EC] border border-[#FF6B6B] text-center">
+              <p className="text-[#1C1C1E] font-medium">Something went wrong</p>
+              <p className="text-sm text-[#5f6368] mt-1">Please try again or email us directly.</p>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium text-[#1C1C1E] mb-2">
-                  First Name
+                  First Name *
                 </label>
                 <input
                   type="text"
                   id="firstName"
+                  required
+                  value={formData.firstName}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
                   placeholder="Your first name"
                 />
               </div>
               <div>
                 <label htmlFor="lastName" className="block text-sm font-medium text-[#1C1C1E] mb-2">
-                  Last Name
+                  Last Name *
                 </label>
                 <input
                   type="text"
                   id="lastName"
+                  required
+                  value={formData.lastName}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
                   placeholder="Your last name"
                 />
               </div>
             </div>
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-[#1C1C1E] mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#1a1a2e] focus:ring-0 transition-colors duration-300"
-                placeholder="your@email.com"
-              />
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-[#1C1C1E] mb-2">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
+                  placeholder="your@email.com"
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-[#1C1C1E] mb-2">
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
+                  placeholder="+91 XXXXX XXXXX"
+                />
+              </div>
             </div>
 
             <div>
               <label htmlFor="interest" className="block text-sm font-medium text-[#1C1C1E] mb-2">
-                How would you like to help?
+                How would you like to help? *
               </label>
               <select
                 id="interest"
-                className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#1a1a2e] focus:ring-0 transition-colors duration-300"
+                required
+                value={formData.interest}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
               >
                 <option value="">Select an option</option>
                 <option value="volunteer">Volunteer</option>
@@ -147,21 +244,20 @@ export default function Join() {
               <textarea
                 id="message"
                 rows={4}
-                className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#1a1a2e] focus:ring-0 transition-colors duration-300 resize-none"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300 resize-none"
                 placeholder="Your background and why you want to join..."
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-4 text-base font-medium text-white bg-[#0A84FF] rounded-full hover:bg-[#0066CC] transition-all duration-300"
+              disabled={isSubmitting}
+              className="w-full py-4 text-base font-medium text-white bg-[#0A84FF] rounded-full hover:bg-[#0066CC] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Submit
+              {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
-
-            <p className="text-center text-sm text-[#9aa0a6]">
-              This is a static form. For immediate assistance, email us directly.
-            </p>
           </form>
         </div>
       </section>

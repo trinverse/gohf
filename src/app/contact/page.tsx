@@ -1,6 +1,58 @@
+'use client'
+
+import { useState } from 'react'
 import Hero from '@/components/Hero'
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.id]: e.target.value
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <Hero
@@ -75,14 +127,31 @@ export default function Contact() {
                   Send a message
                 </h3>
 
-                <form className="space-y-6">
+                {submitStatus === 'success' && (
+                  <div className="mb-6 p-4 rounded-2xl bg-[#E8FAE8] border border-[#30D158] text-center">
+                    <p className="text-[#1C1C1E] font-medium">Message sent!</p>
+                    <p className="text-sm text-[#5f6368] mt-1">We&apos;ll get back to you soon.</p>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="mb-6 p-4 rounded-2xl bg-[#FCE4EC] border border-[#FF6B6B] text-center">
+                    <p className="text-[#1C1C1E] font-medium">Something went wrong</p>
+                    <p className="text-sm text-[#5f6368] mt-1">Please try again or email us directly.</p>
+                  </div>
+                )}
+
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-[#1C1C1E] mb-2">
-                      Name
+                      Name *
                     </label>
                     <input
                       type="text"
                       id="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
                       placeholder="Your name"
                     />
@@ -90,11 +159,14 @@ export default function Contact() {
 
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-[#1C1C1E] mb-2">
-                      Email
+                      Email *
                     </label>
                     <input
                       type="email"
                       id="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
                       placeholder="your@email.com"
                     />
@@ -106,6 +178,8 @@ export default function Contact() {
                     </label>
                     <select
                       id="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
                     >
                       <option value="">Select a topic</option>
@@ -118,26 +192,26 @@ export default function Contact() {
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-[#1C1C1E] mb-2">
-                      Message
+                      Message *
                     </label>
                     <textarea
                       id="message"
                       rows={5}
-                      className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#1a1a2e] focus:ring-0 transition-colors duration-300 resize-none"
+                      required
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300 resize-none"
                       placeholder="How can we help?"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 text-base font-medium text-white bg-[#0A84FF] rounded-full hover:bg-[#0066CC] transition-all duration-300"
+                    disabled={isSubmitting}
+                    className="w-full py-4 text-base font-medium text-white bg-[#0A84FF] rounded-full hover:bg-[#0066CC] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
-
-                  <p className="text-center text-sm text-[#9aa0a6]">
-                    Static form. For immediate help, email us directly.
-                  </p>
                 </form>
               </div>
             </div>

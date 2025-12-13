@@ -1,8 +1,8 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  output: 'export',
-  basePath: '/gohf',
+  // Remove 'export' to enable API routes on Vercel
+  // basePath removed - Vercel handles domain directly
   images: {
     unoptimized: true,
   },
