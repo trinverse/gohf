@@ -161,7 +161,7 @@ export default function Admin() {
   const totalDonations = donations.reduce((sum, d) => sum + (d.amount || 0), 0)
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-20">
       {/* Header */}
       <div className="border-b border-[#f0f0f0]">
         <div className="py-12 px-6">
