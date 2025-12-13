@@ -69,10 +69,74 @@ export default function Admin() {
   }
 
   const tabs = [
-    { id: 'members' as Tab, label: 'Members', count: members.length },
-    { id: 'donations' as Tab, label: 'Donations', count: donations.length },
-    { id: 'events' as Tab, label: 'Event Registrations', count: events.length },
-    { id: 'messages' as Tab, label: 'Messages', count: messages.length },
+    {
+      id: 'members' as Tab,
+      label: 'Members',
+      count: members.length,
+      icon: (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+        </svg>
+      ),
+      emptyIcon: (
+        <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+        </svg>
+      ),
+      emptyTitle: 'No members yet',
+      emptyDesc: 'When people join the foundation, they will appear here.'
+    },
+    {
+      id: 'donations' as Tab,
+      label: 'Donations',
+      count: donations.length,
+      icon: (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+        </svg>
+      ),
+      emptyIcon: (
+        <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+        </svg>
+      ),
+      emptyTitle: 'No donations yet',
+      emptyDesc: 'Donations will be tracked here once received.'
+    },
+    {
+      id: 'events' as Tab,
+      label: 'Events',
+      count: events.length,
+      icon: (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+        </svg>
+      ),
+      emptyIcon: (
+        <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+        </svg>
+      ),
+      emptyTitle: 'No registrations yet',
+      emptyDesc: 'Event registrations will appear here.'
+    },
+    {
+      id: 'messages' as Tab,
+      label: 'Messages',
+      count: messages.length,
+      icon: (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+        </svg>
+      ),
+      emptyIcon: (
+        <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+        </svg>
+      ),
+      emptyTitle: 'No messages yet',
+      emptyDesc: 'Contact form submissions will appear here.'
+    },
   ]
 
   const formatDate = (dateString: string | undefined) => {
@@ -81,40 +145,88 @@ export default function Admin() {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
+    })
+  }
+
+  const formatTime = (dateString: string | undefined) => {
+    if (!dateString) return ''
+    return new Date(dateString).toLocaleTimeString('en-IN', {
       hour: '2-digit',
       minute: '2-digit',
     })
   }
 
+  const currentTab = tabs.find(t => t.id === activeTab)
+
+  const totalDonations = donations.reduce((sum, d) => sum + (d.amount || 0), 0)
+
   return (
-    <div className="min-h-screen bg-[#fafafa]">
-      <div className="py-12 px-6">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-8">
-            <h1 className="text-3xl font-semibold text-[#1C1C1E] tracking-tight">
-              Admin Dashboard
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <div className="border-b border-[#f0f0f0]">
+        <div className="py-12 px-6">
+          <div className="mx-auto max-w-6xl">
+            <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">Dashboard</span>
+            <h1 className="mt-2 text-4xl md:text-5xl font-semibold text-[#1C1C1E] tracking-tight">
+              Admin
             </h1>
-            <p className="mt-2 text-[#5f6368]">
-              View and manage foundation data
+            <p className="mt-3 text-lg text-[#86868b]">
+              Overview of foundation activities and data
             </p>
           </div>
+        </div>
+      </div>
 
-          {/* Tabs */}
-          <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
+      {/* Stats Overview */}
+      <div className="border-b border-[#f0f0f0] bg-[#fafafa]">
+        <div className="py-8 px-6">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="group">
+                <p className="text-sm font-medium text-[#86868b] tracking-wide">Members</p>
+                <p className="mt-1 text-3xl font-semibold text-[#1C1C1E] tracking-tight">{members.length}</p>
+              </div>
+              <div className="group">
+                <p className="text-sm font-medium text-[#86868b] tracking-wide">Donations</p>
+                <p className="mt-1 text-3xl font-semibold text-[#1C1C1E] tracking-tight">
+                  {totalDonations > 0 ? `₹${totalDonations.toLocaleString('en-IN')}` : '₹0'}
+                </p>
+              </div>
+              <div className="group">
+                <p className="text-sm font-medium text-[#86868b] tracking-wide">Registrations</p>
+                <p className="mt-1 text-3xl font-semibold text-[#1C1C1E] tracking-tight">{events.length}</p>
+              </div>
+              <div className="group">
+                <p className="text-sm font-medium text-[#86868b] tracking-wide">Messages</p>
+                <p className="mt-1 text-3xl font-semibold text-[#1C1C1E] tracking-tight">{messages.length}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="py-12 px-6">
+        <div className="mx-auto max-w-6xl">
+          {/* Navigation Tabs */}
+          <div className="flex gap-1 p-1.5 bg-[#f5f5f7] rounded-2xl w-fit mb-10">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 ${
+                className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   activeTab === tab.id
-                    ? 'bg-[#0A84FF] text-white'
-                    : 'bg-white text-[#5f6368] hover:bg-[#f0f0f0]'
+                    ? 'bg-white text-[#1C1C1E] shadow-sm'
+                    : 'text-[#86868b] hover:text-[#1C1C1E]'
                 }`}
               >
-                {tab.label}
+                <span className={activeTab === tab.id ? 'text-[#0A84FF]' : ''}>{tab.icon}</span>
+                <span>{tab.label}</span>
                 {tab.count > 0 && (
-                  <span className={`ml-2 px-2 py-0.5 rounded-full text-xs ${
-                    activeTab === tab.id ? 'bg-white/20' : 'bg-[#e8eaed]'
+                  <span className={`px-2 py-0.5 rounded-md text-xs font-medium ${
+                    activeTab === tab.id
+                      ? 'bg-[#0A84FF] text-white'
+                      : 'bg-[#e8e8ed] text-[#86868b]'
                   }`}>
                     {tab.count}
                   </span>
@@ -123,219 +235,247 @@ export default function Admin() {
             ))}
           </div>
 
-          {/* Content */}
-          <div className="bg-white rounded-3xl shadow-[0_2px_8px_rgba(0,0,0,0.04)] overflow-hidden">
-            {loading ? (
-              <div className="p-12 text-center">
-                <div className="inline-block w-8 h-8 border-2 border-[#0A84FF] border-t-transparent rounded-full animate-spin" />
-                <p className="mt-4 text-[#5f6368]">Loading...</p>
+          {/* Content Area */}
+          {loading ? (
+            <div className="flex flex-col items-center justify-center py-24">
+              <div className="w-10 h-10 border-2 border-[#0A84FF] border-t-transparent rounded-full animate-spin" />
+              <p className="mt-6 text-[#86868b]">Loading data...</p>
+            </div>
+          ) : error ? (
+            <div className="flex flex-col items-center justify-center py-24">
+              <div className="w-16 h-16 rounded-full bg-[#FFF4E0] flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-[#FF9F0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                </svg>
               </div>
-            ) : error ? (
-              <div className="p-12 text-center">
-                <p className="text-[#FF6B6B]">{error}</p>
-                <button
-                  onClick={fetchData}
-                  className="mt-4 px-6 py-2 bg-[#0A84FF] text-white rounded-full text-sm font-medium hover:bg-[#0066CC] transition-colors"
-                >
-                  Retry
-                </button>
-              </div>
-            ) : (
-              <>
-                {/* Members Table */}
-                {activeTab === 'members' && (
-                  <div className="overflow-x-auto">
-                    {members.length === 0 ? (
-                      <div className="p-12 text-center text-[#5f6368]">
-                        No members registered yet
-                      </div>
-                    ) : (
-                      <table className="w-full">
-                        <thead className="bg-[#f8f9fa] border-b border-[#e8eaed]">
-                          <tr>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Name</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Email</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Phone</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Interest</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Status</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Date</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-[#e8eaed]">
-                          {members.map((member) => (
-                            <tr key={member.id} className="hover:bg-[#f8f9fa] transition-colors">
-                              <td className="px-6 py-4 text-sm text-[#1C1C1E] font-medium">
+              <p className="text-[#1C1C1E] font-medium">{error}</p>
+              <button
+                onClick={fetchData}
+                className="mt-6 px-6 py-3 bg-[#0A84FF] text-white rounded-full text-sm font-medium hover:bg-[#0066CC] transition-all duration-300"
+              >
+                Try Again
+              </button>
+            </div>
+          ) : (
+            <>
+              {/* Members */}
+              {activeTab === 'members' && (
+                members.length === 0 ? (
+                  <EmptyState
+                    icon={currentTab?.emptyIcon}
+                    title={currentTab?.emptyTitle || ''}
+                    description={currentTab?.emptyDesc || ''}
+                  />
+                ) : (
+                  <div className="space-y-4">
+                    {members.map((member) => (
+                      <div key={member.id} className="group p-6 rounded-2xl bg-[#fafafa] hover:bg-[#f5f5f7] transition-colors duration-300">
+                        <div className="flex items-start justify-between">
+                          <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#E3F2FF] to-[#f0f0f0] flex items-center justify-center">
+                              <span className="text-lg font-semibold text-[#0A84FF]">
+                                {member.first_name?.charAt(0)}{member.last_name?.charAt(0)}
+                              </span>
+                            </div>
+                            <div>
+                              <h3 className="text-base font-semibold text-[#1C1C1E]">
                                 {member.first_name} {member.last_name}
-                              </td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368]">{member.email}</td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368]">{member.phone || '-'}</td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368] capitalize">{member.interest || '-'}</td>
-                              <td className="px-6 py-4">
-                                <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
-                                  member.status === 'approved' ? 'bg-[#E8FAE8] text-[#30D158]' :
-                                  member.status === 'pending' ? 'bg-[#FFF4E0] text-[#FF9F0A]' :
-                                  'bg-[#e8eaed] text-[#5f6368]'
-                                }`}>
-                                  {member.status || 'pending'}
-                                </span>
-                              </td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368]">{formatDate(member.created_at)}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    )}
-                  </div>
-                )}
-
-                {/* Donations Table */}
-                {activeTab === 'donations' && (
-                  <div className="overflow-x-auto">
-                    {donations.length === 0 ? (
-                      <div className="p-12 text-center text-[#5f6368]">
-                        No donations recorded yet
+                              </h3>
+                              <p className="text-sm text-[#86868b]">{member.email}</p>
+                            </div>
+                          </div>
+                          <StatusBadge status={member.status || 'pending'} />
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-[#e8e8ed] flex flex-wrap gap-6 text-sm">
+                          {member.phone && (
+                            <div>
+                              <span className="text-[#86868b]">Phone: </span>
+                              <span className="text-[#1C1C1E]">{member.phone}</span>
+                            </div>
+                          )}
+                          {member.interest && (
+                            <div>
+                              <span className="text-[#86868b]">Interest: </span>
+                              <span className="text-[#1C1C1E] capitalize">{member.interest}</span>
+                            </div>
+                          )}
+                          <div>
+                            <span className="text-[#86868b]">Joined: </span>
+                            <span className="text-[#1C1C1E]">{formatDate(member.created_at)}</span>
+                          </div>
+                        </div>
                       </div>
-                    ) : (
-                      <table className="w-full">
-                        <thead className="bg-[#f8f9fa] border-b border-[#e8eaed]">
-                          <tr>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Donor</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Email</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Amount</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Method</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Status</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Date</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-[#e8eaed]">
-                          {donations.map((donation) => (
-                            <tr key={donation.id} className="hover:bg-[#f8f9fa] transition-colors">
-                              <td className="px-6 py-4 text-sm text-[#1C1C1E] font-medium">{donation.donor_name}</td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368]">{donation.donor_email}</td>
-                              <td className="px-6 py-4 text-sm text-[#1C1C1E] font-medium">
-                                {donation.currency} {donation.amount?.toLocaleString('en-IN')}
-                              </td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368] capitalize">{donation.method || '-'}</td>
-                              <td className="px-6 py-4">
-                                <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
-                                  donation.status === 'completed' ? 'bg-[#E8FAE8] text-[#30D158]' :
-                                  donation.status === 'pending' ? 'bg-[#FFF4E0] text-[#FF9F0A]' :
-                                  'bg-[#FCE4EC] text-[#FF6B6B]'
-                                }`}>
-                                  {donation.status || 'pending'}
-                                </span>
-                              </td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368]">{formatDate(donation.created_at)}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    )}
+                    ))}
                   </div>
-                )}
+                )
+              )}
 
-                {/* Events Table */}
-                {activeTab === 'events' && (
-                  <div className="overflow-x-auto">
-                    {events.length === 0 ? (
-                      <div className="p-12 text-center text-[#5f6368]">
-                        No event registrations yet
+              {/* Donations */}
+              {activeTab === 'donations' && (
+                donations.length === 0 ? (
+                  <EmptyState
+                    icon={currentTab?.emptyIcon}
+                    title={currentTab?.emptyTitle || ''}
+                    description={currentTab?.emptyDesc || ''}
+                  />
+                ) : (
+                  <div className="space-y-4">
+                    {donations.map((donation) => (
+                      <div key={donation.id} className="group p-6 rounded-2xl bg-[#fafafa] hover:bg-[#f5f5f7] transition-colors duration-300">
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <h3 className="text-base font-semibold text-[#1C1C1E]">{donation.donor_name}</h3>
+                            <p className="text-sm text-[#86868b]">{donation.donor_email}</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-xl font-semibold text-[#30D158]">
+                              {donation.currency || '₹'}{donation.amount?.toLocaleString('en-IN')}
+                            </p>
+                            <StatusBadge status={donation.status || 'pending'} />
+                          </div>
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-[#e8e8ed] flex flex-wrap gap-6 text-sm">
+                          {donation.method && (
+                            <div>
+                              <span className="text-[#86868b]">Method: </span>
+                              <span className="text-[#1C1C1E] capitalize">{donation.method}</span>
+                            </div>
+                          )}
+                          {donation.transaction_id && (
+                            <div>
+                              <span className="text-[#86868b]">Transaction: </span>
+                              <span className="text-[#1C1C1E] font-mono text-xs">{donation.transaction_id}</span>
+                            </div>
+                          )}
+                          <div>
+                            <span className="text-[#86868b]">Date: </span>
+                            <span className="text-[#1C1C1E]">{formatDate(donation.created_at)}</span>
+                          </div>
+                        </div>
                       </div>
-                    ) : (
-                      <table className="w-full">
-                        <thead className="bg-[#f8f9fa] border-b border-[#e8eaed]">
-                          <tr>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Event</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Participant</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Email</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Phone</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Guests</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Status</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Date</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-[#e8eaed]">
-                          {events.map((event) => (
-                            <tr key={event.id} className="hover:bg-[#f8f9fa] transition-colors">
-                              <td className="px-6 py-4 text-sm text-[#1C1C1E] font-medium">{event.event_name}</td>
-                              <td className="px-6 py-4 text-sm text-[#1C1C1E]">{event.participant_name}</td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368]">{event.participant_email}</td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368]">{event.participant_phone || '-'}</td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368]">{event.num_guests || 0}</td>
-                              <td className="px-6 py-4">
-                                <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
-                                  event.status === 'registered' ? 'bg-[#E8FAE8] text-[#30D158]' :
-                                  event.status === 'cancelled' ? 'bg-[#FCE4EC] text-[#FF6B6B]' :
-                                  'bg-[#e8eaed] text-[#5f6368]'
-                                }`}>
-                                  {event.status || 'registered'}
-                                </span>
-                              </td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368]">{formatDate(event.created_at)}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    )}
+                    ))}
                   </div>
-                )}
+                )
+              )}
 
-                {/* Messages Table */}
-                {activeTab === 'messages' && (
-                  <div className="overflow-x-auto">
-                    {messages.length === 0 ? (
-                      <div className="p-12 text-center text-[#5f6368]">
-                        No messages received yet
+              {/* Events */}
+              {activeTab === 'events' && (
+                events.length === 0 ? (
+                  <EmptyState
+                    icon={currentTab?.emptyIcon}
+                    title={currentTab?.emptyTitle || ''}
+                    description={currentTab?.emptyDesc || ''}
+                  />
+                ) : (
+                  <div className="space-y-4">
+                    {events.map((event) => (
+                      <div key={event.id} className="group p-6 rounded-2xl bg-[#fafafa] hover:bg-[#f5f5f7] transition-colors duration-300">
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <span className="inline-block px-3 py-1 text-xs font-medium text-[#0A84FF] bg-[#E3F2FF] rounded-full mb-2">
+                              {event.event_name}
+                            </span>
+                            <h3 className="text-base font-semibold text-[#1C1C1E]">{event.participant_name}</h3>
+                            <p className="text-sm text-[#86868b]">{event.participant_email}</p>
+                          </div>
+                          <StatusBadge status={event.status || 'registered'} />
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-[#e8e8ed] flex flex-wrap gap-6 text-sm">
+                          {event.participant_phone && (
+                            <div>
+                              <span className="text-[#86868b]">Phone: </span>
+                              <span className="text-[#1C1C1E]">{event.participant_phone}</span>
+                            </div>
+                          )}
+                          <div>
+                            <span className="text-[#86868b]">Guests: </span>
+                            <span className="text-[#1C1C1E]">{event.num_guests || 0}</span>
+                          </div>
+                          <div>
+                            <span className="text-[#86868b]">Registered: </span>
+                            <span className="text-[#1C1C1E]">{formatDate(event.created_at)}</span>
+                          </div>
+                        </div>
                       </div>
-                    ) : (
-                      <table className="w-full">
-                        <thead className="bg-[#f8f9fa] border-b border-[#e8eaed]">
-                          <tr>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Name</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Email</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Subject</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Message</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Status</th>
-                            <th className="px-6 py-4 text-left text-xs font-semibold text-[#5f6368] uppercase tracking-wide">Date</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-[#e8eaed]">
-                          {messages.map((message) => (
-                            <tr key={message.id} className="hover:bg-[#f8f9fa] transition-colors">
-                              <td className="px-6 py-4 text-sm text-[#1C1C1E] font-medium">{message.name}</td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368]">{message.email}</td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368] capitalize">{message.subject || '-'}</td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368] max-w-xs truncate">{message.message}</td>
-                              <td className="px-6 py-4">
-                                <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
-                                  message.status === 'read' ? 'bg-[#e8eaed] text-[#5f6368]' :
-                                  message.status === 'replied' ? 'bg-[#E8FAE8] text-[#30D158]' :
-                                  'bg-[#E3F2FF] text-[#0A84FF]'
-                                }`}>
-                                  {message.status || 'unread'}
-                                </span>
-                              </td>
-                              <td className="px-6 py-4 text-sm text-[#5f6368]">{formatDate(message.created_at)}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    )}
+                    ))}
                   </div>
-                )}
-              </>
-            )}
-          </div>
+                )
+              )}
 
-          {/* Info Note */}
-          <div className="mt-8 p-4 rounded-2xl bg-[#E3F2FF] border border-[#0A84FF]/20">
-            <p className="text-sm text-[#5f6368]">
-              <span className="font-medium text-[#1C1C1E]">Note:</span> This is a basic admin view.
-              For data management (edit, delete), access your Supabase dashboard directly.
-            </p>
-          </div>
+              {/* Messages */}
+              {activeTab === 'messages' && (
+                messages.length === 0 ? (
+                  <EmptyState
+                    icon={currentTab?.emptyIcon}
+                    title={currentTab?.emptyTitle || ''}
+                    description={currentTab?.emptyDesc || ''}
+                  />
+                ) : (
+                  <div className="space-y-4">
+                    {messages.map((message) => (
+                      <div key={message.id} className="group p-6 rounded-2xl bg-[#fafafa] hover:bg-[#f5f5f7] transition-colors duration-300">
+                        <div className="flex items-start justify-between mb-4">
+                          <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FFF4E0] to-[#f0f0f0] flex items-center justify-center">
+                              <span className="text-lg font-semibold text-[#FF9F0A]">
+                                {message.name?.charAt(0)}
+                              </span>
+                            </div>
+                            <div>
+                              <h3 className="text-base font-semibold text-[#1C1C1E]">{message.name}</h3>
+                              <p className="text-sm text-[#86868b]">{message.email}</p>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <StatusBadge status={message.status || 'unread'} />
+                            <p className="text-xs text-[#86868b] mt-1">{formatDate(message.created_at)} {formatTime(message.created_at)}</p>
+                          </div>
+                        </div>
+                        {message.subject && (
+                          <p className="text-sm font-medium text-[#1C1C1E] mb-2">{message.subject}</p>
+                        )}
+                        <p className="text-sm text-[#5f6368] leading-relaxed">{message.message}</p>
+                      </div>
+                    ))}
+                  </div>
+                )
+              )}
+            </>
+          )}
         </div>
       </div>
     </div>
+  )
+}
+
+function EmptyState({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
+  return (
+    <div className="flex flex-col items-center justify-center py-24">
+      <div className="text-[#d1d1d6] mb-6">
+        {icon}
+      </div>
+      <h3 className="text-xl font-semibold text-[#1C1C1E] tracking-tight">{title}</h3>
+      <p className="mt-2 text-[#86868b] text-center max-w-sm">{description}</p>
+    </div>
+  )
+}
+
+function StatusBadge({ status }: { status: string }) {
+  const styles: Record<string, string> = {
+    approved: 'bg-[#E8FAE8] text-[#30D158]',
+    completed: 'bg-[#E8FAE8] text-[#30D158]',
+    registered: 'bg-[#E8FAE8] text-[#30D158]',
+    replied: 'bg-[#E8FAE8] text-[#30D158]',
+    pending: 'bg-[#FFF4E0] text-[#FF9F0A]',
+    unread: 'bg-[#E3F2FF] text-[#0A84FF]',
+    read: 'bg-[#f0f0f0] text-[#86868b]',
+    cancelled: 'bg-[#FCE4EC] text-[#FF6B6B]',
+    failed: 'bg-[#FCE4EC] text-[#FF6B6B]',
+  }
+
+  return (
+    <span className={`inline-flex px-2.5 py-1 text-xs font-medium rounded-lg capitalize ${styles[status] || 'bg-[#f0f0f0] text-[#86868b]'}`}>
+      {status}
+    </span>
   )
 }
