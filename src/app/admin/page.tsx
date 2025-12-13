@@ -5,7 +5,14 @@ import { useRouter } from 'next/navigation'
 import { Member, Donation, EventRegistration, ContactMessage } from '@/lib/supabase'
 import { useAuth } from '@/lib/auth-context'
 
-type Tab = 'members' | 'donations' | 'events' | 'messages'
+type Tab = 'members' | 'donations' | 'events' | 'messages' | 'users'
+
+interface AppUser {
+  id: string
+  email: string
+  role: string
+  created_at: string
+}
 
 export default function Admin() {
   const [activeTab, setActiveTab] = useState<Tab>('members')
@@ -13,8 +20,10 @@ export default function Admin() {
   const [donations, setDonations] = useState<Donation[]>([])
   const [events, setEvents] = useState<EventRegistration[]>([])
   const [messages, setMessages] = useState<ContactMessage[]>([])
+  const [users, setUsers] = useState<AppUser[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [updatingRole, setUpdatingRole] = useState<string | null>(null)
 
   const { user, role, loading: authLoading } = useAuth()
   const router = useRouter()
@@ -54,6 +63,9 @@ export default function Admin() {
         case 'messages':
           endpoint = '/api/contact'
           break
+        case 'users':
+          endpoint = '/api/users'
+          break
       }
 
       const response = await fetch(endpoint)
@@ -76,6 +88,9 @@ export default function Admin() {
           break
         case 'messages':
           setMessages(result.data || [])
+          break
+        case 'users':
+          setUsers(result.data || [])
           break
       }
     } catch (err) {
@@ -155,6 +170,23 @@ export default function Admin() {
       emptyTitle: 'No messages yet',
       emptyDesc: 'Contact form submissions will appear here.'
     },
+    {
+      id: 'users' as Tab,
+      label: 'Users',
+      count: users.length,
+      icon: (
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+        </svg>
+      ),
+      emptyIcon: (
+        <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+        </svg>
+      ),
+      emptyTitle: 'No users yet',
+      emptyDesc: 'Registered users will appear here.'
+    },
   ]
 
   const formatDate = (dateString: string | undefined) => {
@@ -172,6 +204,30 @@ export default function Admin() {
       hour: '2-digit',
       minute: '2-digit',
     })
+  }
+
+  const updateUserRole = async (userId: string, newRole: string) => {
+    setUpdatingRole(userId)
+    try {
+      const response = await fetch('/api/users', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: userId, role: newRole }),
+      })
+      const result = await response.json()
+
+      if (result.error) {
+        setError(result.error)
+      } else {
+        // Update local state
+        setUsers(users.map(u => u.id === userId ? { ...u, role: newRole } : u))
+      }
+    } catch (err) {
+      console.error('Error updating role:', err)
+      setError('Failed to update role')
+    } finally {
+      setUpdatingRole(null)
+    }
   }
 
   const currentTab = tabs.find(t => t.id === activeTab)
@@ -470,6 +526,76 @@ export default function Admin() {
                   </div>
                 )
               )}
+
+              {/* Users */}
+              {activeTab === 'users' && (
+                users.length === 0 ? (
+                  <EmptyState
+                    icon={currentTab?.emptyIcon}
+                    title={currentTab?.emptyTitle || ''}
+                    description={currentTab?.emptyDesc || ''}
+                  />
+                ) : (
+                  <div className="space-y-4">
+                    {users.map((appUser) => (
+                      <div key={appUser.id} className="group p-6 rounded-2xl bg-[#fafafa] hover:bg-[#f5f5f7] transition-colors duration-300">
+                        <div className="flex items-start justify-between">
+                          <div className="flex items-center gap-4">
+                            <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                              appUser.role === 'admin'
+                                ? 'bg-gradient-to-br from-[#FFF4E0] to-[#f0f0f0]'
+                                : 'bg-gradient-to-br from-[#E3F2FF] to-[#f0f0f0]'
+                            }`}>
+                              <span className={`text-lg font-semibold ${
+                                appUser.role === 'admin' ? 'text-[#FF9F0A]' : 'text-[#0A84FF]'
+                              }`}>
+                                {appUser.email?.charAt(0).toUpperCase()}
+                              </span>
+                            </div>
+                            <div>
+                              <h3 className="text-base font-semibold text-[#1C1C1E]">{appUser.email}</h3>
+                              <p className="text-sm text-[#86868b]">Joined {formatDate(appUser.created_at)}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            {/* Role Toggle */}
+                            <div className="flex items-center gap-2 p-1 bg-[#f0f0f0] rounded-xl">
+                              <button
+                                onClick={() => updateUserRole(appUser.id, 'member')}
+                                disabled={updatingRole === appUser.id || appUser.id === user?.id}
+                                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                                  appUser.role === 'member'
+                                    ? 'bg-white text-[#1C1C1E] shadow-sm'
+                                    : 'text-[#86868b] hover:text-[#1C1C1E]'
+                                } disabled:opacity-50 disabled:cursor-not-allowed`}
+                              >
+                                Member
+                              </button>
+                              <button
+                                onClick={() => updateUserRole(appUser.id, 'admin')}
+                                disabled={updatingRole === appUser.id || appUser.id === user?.id}
+                                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                                  appUser.role === 'admin'
+                                    ? 'bg-white text-[#FF9F0A] shadow-sm'
+                                    : 'text-[#86868b] hover:text-[#1C1C1E]'
+                                } disabled:opacity-50 disabled:cursor-not-allowed`}
+                              >
+                                Admin
+                              </button>
+                            </div>
+                            {updatingRole === appUser.id && (
+                              <div className="w-5 h-5 border-2 border-[#0A84FF] border-t-transparent rounded-full animate-spin" />
+                            )}
+                          </div>
+                        </div>
+                        {appUser.id === user?.id && (
+                          <p className="mt-3 text-xs text-[#86868b]">This is your account - role cannot be changed</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )
+              )}
             </>
           )}
         </div>
@@ -501,6 +627,8 @@ function StatusBadge({ status }: { status: string }) {
     read: 'bg-[#f0f0f0] text-[#86868b]',
     cancelled: 'bg-[#FCE4EC] text-[#FF6B6B]',
     failed: 'bg-[#FCE4EC] text-[#FF6B6B]',
+    admin: 'bg-[#FFF4E0] text-[#FF9F0A]',
+    member: 'bg-[#E3F2FF] text-[#0A84FF]',
   }
 
   return (
