@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* Material 3 Design Tokens - Jony Ive Inspired */
+:root {
+  /* Primary Tonal Palette - Deep Indigo */
+  --md-sys-color-primary: #1a1a2e;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #e8eaf6;
+  --md-sys-color-on-primary-container: #1a1a2e;
+
+  /* Secondary Tonal Palette - Warm Gold */
+  --md-sys-color-secondary: #b8860b;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #fff8e1;
+  --md-sys-color-on-secondary-container: #5d4200;
+
+  /* Tertiary - Soft Sage */
+  --md-sys-color-tertiary: #4a6741;
+  --md-sys-color-on-tertiary: #ffffff;
+
+  /* Surface Colors */
+  --md-sys-color-surface: #fafafa;
+  --md-sys-color-surface-dim: #f5f5f5;
+  --md-sys-color-surface-bright: #ffffff;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #f8f9fa;
+  --md-sys-color-surface-container: #f1f3f4;
+  --md-sys-color-surface-container-high: #e8eaed;
+  --md-sys-color-surface-container-highest: #dee0e3;
+
+  /* On Surface */
+  --md-sys-color-on-surface: #1a1a2e;
+  --md-sys-color-on-surface-variant: #5f6368;
+
+  /* Outline */
+  --md-sys-color-outline: #dadce0;
+  --md-sys-color-outline-variant: #e8eaed;
+
+  /* Typography Scale */
+  --md-sys-typescale-display-large: 3.5rem;
+  --md-sys-typescale-display-medium: 2.75rem;
+  --md-sys-typescale-headline-large: 2rem;
+  --md-sys-typescale-headline-medium: 1.75rem;
+  --md-sys-typescale-title-large: 1.375rem;
+  --md-sys-typescale-title-medium: 1rem;
+  --md-sys-typescale-body-large: 1rem;
+  --md-sys-typescale-body-medium: 0.875rem;
+  --md-sys-typescale-label-large: 0.875rem;
+
+  /* Elevation (Box Shadows) */
+  --md-sys-elevation-1: 0 1px 3px 1px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --md-sys-elevation-2: 0 2px 6px 2px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --md-sys-elevation-3: 0 4px 8px 3px rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --md-sys-elevation-4: 0 6px 10px 4px rgba(0, 0, 0, 0.05), 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+  --md-sys-elevation-5: 0 8px 12px 6px rgba(0, 0, 0, 0.05), 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+
+  /* Shape */
+  --md-sys-shape-corner-none: 0;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full: 9999px;
+
+  /* Motion - Jony Ive smooth transitions */
+  --md-sys-motion-duration-short: 150ms;
+  --md-sys-motion-duration-medium: 300ms;
+  --md-sys-motion-duration-long: 500ms;
+  --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-decelerate: cubic-bezier(0, 0, 0, 1);
+  --md-sys-motion-easing-accelerate: cubic-bezier(0.3, 0, 1, 1);
+}
+
+/* Base Styles */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--md-sys-color-on-surface);
+  background: var(--md-sys-color-surface);
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+}
+
+/* Premium Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button {
+  transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(26, 26, 46, 0.15);
+}
+
+/* Focus styles - M3 inspired */
+:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling for premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--md-sys-color-on-surface-variant);
+}
