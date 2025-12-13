@@ -1,6 +1,8 @@
-# JNV Alumni Foundation Website
+# Guardians of Hope Foundation
 
-A static website for the JNV Alumni Foundation - an alumni-led non-profit initiative dedicated to supporting needy children through education, mentorship, and community programs.
+*Where courage meets the care*
+
+A static website for the Guardians of Hope Foundation - a JNV alumni-led non-profit initiative dedicated to supporting needy children through education, mentorship, and community programs.
 
 **Note:** This is NOT an official JNV school website. It is an independent non-profit organization founded by JNV alumni.
 
@@ -14,7 +16,7 @@ A static website for the JNV Alumni Foundation - an alumni-led non-profit initia
 ## Features
 
 - Responsive design for all devices
-- 6 pages: Home, About, Founders, Events, Join Us, Contact
+- 7 pages: Home, About, Founders, Members, Events, Join Us, Contact
 - Modern UI with Tailwind CSS
 - Static export for fast loading
 - Automated deployment via GitHub Actions

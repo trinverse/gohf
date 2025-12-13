@@ -154,7 +154,7 @@ export default function Members() {
             </div>
             <h2 className="text-3xl font-semibold text-[#1C1C1E] tracking-tight">Founding Members</h2>
             <p className="mt-3 text-[#5f6368]">
-              The visionaries who came together to establish JNV Alumni Foundation.
+              The visionaries who came together to establish Guardians of Hope Foundation.
             </p>
           </div>
 

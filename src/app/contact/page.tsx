@@ -31,7 +31,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-[#1C1C1E]">Email</h3>
-                    <p className="mt-1 text-[#5f6368]">contact@jnvalumnifoundation.org</p>
+                    <p className="mt-1 text-[#5f6368]">contact@guardiansofhope.org</p>
                   </div>
                 </div>
 
@@ -62,8 +62,8 @@ export default function Contact() {
 
               <div className="mt-10 p-6 rounded-2xl bg-[#f8f9fa] border border-[#e8eaed]">
                 <p className="text-sm text-[#5f6368]">
-                  <span className="font-medium text-[#1C1C1E]">Note:</span> JNV Alumni Foundation
-                  is independent and not affiliated with official JNV administration.
+                  <span className="font-medium text-[#1C1C1E]">Note:</span> Guardians of Hope Foundation
+                  is an independent non-profit by JNV alumni, not affiliated with official JNV administration.
                 </p>
               </div>
             </div>

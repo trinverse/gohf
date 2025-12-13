@@ -38,7 +38,7 @@ export default function Hero({ title, subtitle, showCTA = false, minimal = false
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-[#f1f3f4] mb-8">
           <span className="w-2 h-2 rounded-full bg-[#30D158] animate-pulse" />
-          <span className="text-sm font-medium text-[#5f6368]">Non-profit Initiative by JNV Alumni</span>
+          <span className="text-sm font-medium text-[#5f6368]">Where courage meets the care</span>
         </div>
 
         {/* Main heading */}

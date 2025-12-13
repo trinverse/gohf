@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-JNV Alumni Foundation Website - A static Next.js website for a non-profit organization founded by JNV alumni to support needy children. This is NOT an official JNV school website.
+Guardians of Hope Foundation Website - *Where courage meets the care*
+
+A static Next.js website for a non-profit organization founded by JNV alumni to support needy children. This is NOT an official JNV school website.
 
 **Founders:** Deepak Chauhan, Rajni Dhani, Mayank Tyagi, Ashish Tyagi
 
@@ -40,6 +42,7 @@ src/
 │   ├── page.tsx            # Home page
 │   ├── about/              # About the foundation
 │   ├── founders/           # Founders page
+│   ├── members/            # Members with expandable cards
 │   ├── events/             # Events and activities
 │   ├── join/               # Join the cause page
 │   └── contact/            # Contact page

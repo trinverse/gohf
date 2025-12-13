@@ -4,8 +4,8 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'JNV Alumni Foundation',
-  description: 'An alumni-led non-profit initiative dedicated to supporting needy children through education, mentorship, and community programs',
+  title: 'Guardians of Hope Foundation',
+  description: 'Where courage meets the care - A JNV alumni-led non-profit initiative dedicated to supporting needy children through education, mentorship, and community programs',
 }
 
 export default function RootLayout({

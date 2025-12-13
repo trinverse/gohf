@@ -20,15 +20,18 @@ export default function Footer() {
           <div className="md:col-span-5">
             <Link href="/" className="inline-flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-[#0A84FF] flex items-center justify-center">
-                <span className="text-white font-semibold text-sm">JNV</span>
+                <span className="text-white font-semibold text-sm">GHF</span>
               </div>
-              <span className="text-[#1C1C1E] font-semibold tracking-tight">Alumni Foundation</span>
+              <div>
+                <span className="text-[#1C1C1E] font-semibold tracking-tight block">Guardians of Hope</span>
+                <span className="text-xs text-[#FF9F0A] font-medium">Where courage meets the care</span>
+              </div>
             </Link>
             <p className="mt-6 text-[#5f6368] leading-relaxed max-w-sm">
-              An alumni-led initiative dedicated to empowering underprivileged children through education, mentorship, and community support.
+              A JNV alumni-led initiative dedicated to empowering underprivileged children through education, mentorship, and community support.
             </p>
             <p className="mt-4 text-sm text-[#9aa0a6]">
-              Independent non-profit. Not affiliated with official JNV administration.
+              Independent non-profit by JNV alumni. Not affiliated with official JNV administration.
             </p>
           </div>
 
@@ -53,7 +56,7 @@ export default function Footer() {
           <div className="md:col-span-4">
             <h3 className="text-sm font-semibold text-[#1C1C1E] tracking-wide uppercase">Get in Touch</h3>
             <div className="mt-6 space-y-4">
-              <p className="text-[#5f6368]">contact@jnvalumnifoundation.org</p>
+              <p className="text-[#5f6368]">contact@guardiansofhope.org</p>
               <Link
                 href="/join"
                 className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-[#0A84FF] rounded-full hover:bg-[#0066CC] transition-all duration-300 hover:shadow-lg"
@@ -71,7 +74,7 @@ export default function Footer() {
         <div className="mt-16 pt-8 border-t border-[#e8eaed]">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-[#9aa0a6]">
-              &copy; {new Date().getFullYear()} JNV Alumni Foundation. All rights reserved.
+              &copy; {new Date().getFullYear()} Guardians of Hope Foundation. All rights reserved.
             </p>
             <p className="text-sm text-[#9aa0a6]">
               Made with purpose by JNV Alumni

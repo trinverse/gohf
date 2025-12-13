@@ -40,10 +40,10 @@ export default function Header() {
             className="group flex items-center gap-3"
           >
             <div className="w-10 h-10 rounded-2xl bg-[#0A84FF] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-              <span className="text-white font-semibold text-sm">JNV</span>
+              <span className="text-white font-semibold text-sm">GHF</span>
             </div>
             <div className="hidden sm:block">
-              <span className="text-[#1C1C1E] font-semibold tracking-tight">Alumni Foundation</span>
+              <span className="text-[#1C1C1E] font-semibold tracking-tight">Guardians of Hope</span>
             </div>
           </Link>
 

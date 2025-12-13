@@ -49,7 +49,7 @@ export default function About() {
               </h2>
               <div className="mt-8 space-y-6 text-lg text-[#5f6368] leading-relaxed">
                 <p>
-                  JNV Alumni Foundation emerged from a simple yet powerful idea: those who have
+                  Guardians of Hope Foundation emerged from a simple yet powerful idea: those who have
                   been given opportunities have a responsibility to create them for others.
                 </p>
                 <p>
@@ -139,8 +139,8 @@ export default function About() {
         <div className="mx-auto max-w-3xl">
           <div className="p-8 rounded-3xl bg-[#f8f9fa] border border-[#e8eaed] text-center">
             <p className="text-[#5f6368]">
-              <span className="font-medium text-[#1a1a2e]">Please note:</span> JNV Alumni Foundation
-              is an independent non-profit organization. We are not affiliated with the official
+              <span className="font-medium text-[#1C1C1E]">Please note:</span> Guardians of Hope Foundation
+              is an independent non-profit organization founded by JNV alumni. We are not affiliated with the official
               Jawahar Navodaya Vidyalaya administration or Navodaya Vidyalaya Samiti.
             </p>
           </div>
