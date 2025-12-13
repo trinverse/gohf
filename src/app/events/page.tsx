@@ -3,26 +3,8 @@ import Hero from '@/components/Hero'
 
 const upcomingEvents = [
   {
-    title: 'Annual Scholarship Distribution',
-    date: 'Jan 2025',
-    type: 'Program',
-    description: 'Distribution of scholarships to deserving students for the upcoming academic year.',
-  },
-  {
-    title: 'Career Guidance Workshop',
-    date: 'Feb 2025',
-    type: 'Workshop',
-    description: 'Alumni mentors share insights on career paths and opportunities.',
-  },
-  {
-    title: 'Book & Stationery Drive',
-    date: 'Mar 2025',
-    type: 'Drive',
-    description: 'Collection and distribution of educational materials to students.',
-  },
-  {
     title: 'Alumni Meet & Fundraiser',
-    date: 'Apr 2025',
+    date: 'Dec 2025',
     type: 'Event',
     description: 'Annual gathering to connect, share, and raise funds for initiatives.',
   },

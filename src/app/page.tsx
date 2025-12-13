@@ -41,13 +41,6 @@ const initiatives = [
   },
 ]
 
-const founders = [
-  { name: 'Deepak Chauhan', role: 'Co-Founder' },
-  { name: 'Rajni Dhani', role: 'Co-Founder' },
-  { name: 'Mayank Tyagi', role: 'Co-Founder' },
-  { name: 'Ashish Tyagi', role: 'Co-Founder' },
-]
-
 export default function Home() {
   return (
     <>
@@ -67,7 +60,7 @@ export default function Home() {
                 Every child deserves a chance to thrive
               </h2>
               <p className="mt-6 text-lg text-[#5f6368] leading-relaxed">
-                Born from the shared experiences of Jawahar Navodaya Vidyalaya alumni, we understand the transformative power of opportunity. Our foundation bridges the gap between potential and possibility.
+                A united family of JNV alumni, bound by gratitude and purpose—dedicated to transforming lives through education, mentorship, and support for underprivileged children. We stand with families of our brave soldiers who served on the frontlines. Where education uplifts, sacrifice is honored, and no family ever stands alone.
               </p>
               <div className="mt-8 flex gap-4">
                 <Link
@@ -117,46 +110,6 @@ export default function Home() {
                 variant="elevated"
               />
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Founders Section */}
-      <section className="py-24 px-6">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">Leadership</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-[#1C1C1E] tracking-tight">
-              Our Founders
-            </h2>
-            <p className="mt-6 text-lg text-[#5f6368]">
-              United by their JNV roots and a shared vision for change.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {founders.map((founder) => (
-              <div key={founder.name} className="group text-center">
-                <div className="relative mx-auto w-32 h-32 mb-6">
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E3F2FF] to-[#f1f3f4] rotate-6 transition-transform duration-500 group-hover:rotate-12" />
-                  <div className="relative w-full h-full rounded-3xl bg-[#f8f9fa] flex items-center justify-center">
-                    <span className="text-4xl font-semibold text-[#0A84FF]">{founder.name.charAt(0)}</span>
-                  </div>
-                </div>
-                <h3 className="text-lg font-semibold text-[#1C1C1E]">{founder.name}</h3>
-                <p className="mt-1 text-sm text-[#5f6368]">{founder.role}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-12 text-center">
-            <Link
-              href="/founders"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-[#0A84FF] bg-white rounded-full border border-[#e8eaed] hover:border-[#0A84FF] hover:shadow-lg transition-all duration-300"
-            >
-              <span>Meet the Team</span>
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
           </div>
         </div>
       </section>
