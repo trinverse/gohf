@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useAuth } from '@/lib/auth-context'
 
 const navigation = [
   { name: 'About', href: '/about' },
@@ -15,6 +16,9 @@ const navigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { user, role, loading, signOut } = useAuth()
+
+  const isAdmin = role === 'admin'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +27,11 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleSignOut = async () => {
+    await signOut()
+    setMobileMenuOpen(false)
+  }
 
   return (
     <header
@@ -58,6 +67,38 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+
+            {/* Admin Link - Only visible to admins */}
+            {isAdmin && (
+              <Link
+                href="/admin"
+                className="px-4 py-2 text-sm font-medium text-[#FF9F0A] hover:text-[#FF9F0A] rounded-full hover:bg-[#FFF4E0] transition-all duration-300"
+              >
+                Admin
+              </Link>
+            )}
+
+            {/* Auth Buttons */}
+            {!loading && (
+              <>
+                {user ? (
+                  <button
+                    onClick={handleSignOut}
+                    className="ml-2 px-4 py-2 text-sm font-medium text-[#5f6368] hover:text-[#FF6B6B] rounded-full hover:bg-[#FCE4EC] transition-all duration-300"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <Link
+                    href="/login"
+                    className="ml-2 px-4 py-2 text-sm font-medium text-[#5f6368] hover:text-[#0A84FF] rounded-full hover:bg-[#E3F2FF] transition-all duration-300"
+                  >
+                    Login
+                  </Link>
+                )}
+              </>
+            )}
+
             <Link
               href="/join"
               className="ml-4 px-6 py-2.5 text-sm font-medium text-white bg-[#0A84FF] rounded-full hover:bg-[#0066CC] hover:shadow-lg hover:shadow-[#0A84FF]/20 transition-all duration-300 hover:-translate-y-0.5"
@@ -84,7 +125,7 @@ export default function Header() {
         {/* Mobile menu */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.2,0,0,1)] ${
-            mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+            mobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className="py-4 space-y-1">
@@ -98,6 +139,40 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+
+            {/* Admin Link - Mobile */}
+            {isAdmin && (
+              <Link
+                href="/admin"
+                className="block px-4 py-3 text-base font-medium text-[#FF9F0A] hover:bg-[#FFF4E0] rounded-2xl transition-all duration-300"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Admin
+              </Link>
+            )}
+
+            {/* Auth - Mobile */}
+            {!loading && (
+              <>
+                {user ? (
+                  <button
+                    onClick={handleSignOut}
+                    className="block w-full text-left px-4 py-3 text-base font-medium text-[#5f6368] hover:text-[#FF6B6B] hover:bg-[#FCE4EC] rounded-2xl transition-all duration-300"
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <Link
+                    href="/login"
+                    className="block px-4 py-3 text-base font-medium text-[#5f6368] hover:text-[#0A84FF] hover:bg-[#E3F2FF] rounded-2xl transition-all duration-300"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Login
+                  </Link>
+                )}
+              </>
+            )}
+
             <div className="pt-4 px-4">
               <Link
                 href="/join"

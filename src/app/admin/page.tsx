@@ -1,7 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { Member, Donation, EventRegistration, ContactMessage } from '@/lib/supabase'
+import { useAuth } from '@/lib/auth-context'
 
 type Tab = 'members' | 'donations' | 'events' | 'messages'
 
@@ -14,9 +16,25 @@ export default function Admin() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
+  const { user, role, loading: authLoading } = useAuth()
+  const router = useRouter()
+
+  // Redirect if not authenticated or not admin
   useEffect(() => {
-    fetchData()
-  }, [activeTab])
+    if (!authLoading) {
+      if (!user) {
+        router.push('/login')
+      } else if (role !== 'admin') {
+        router.push('/')
+      }
+    }
+  }, [user, role, authLoading, router])
+
+  useEffect(() => {
+    if (user && role === 'admin') {
+      fetchData()
+    }
+  }, [activeTab, user, role])
 
   const fetchData = async () => {
     setLoading(true)
@@ -159,6 +177,18 @@ export default function Admin() {
   const currentTab = tabs.find(t => t.id === activeTab)
 
   const totalDonations = donations.reduce((sum, d) => sum + (d.amount || 0), 0)
+
+  // Show loading while checking auth
+  if (authLoading || !user || role !== 'admin') {
+    return (
+      <div className="min-h-screen bg-white pt-20 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-10 h-10 border-2 border-[#0A84FF] border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="mt-4 text-[#86868b]">Checking access...</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-white pt-20">
