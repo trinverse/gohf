@@ -22,19 +22,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [role, setRole] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
 
-  // Fetch user role from database
-  const fetchUserRole = async (userId: string) => {
+  // Fetch user role from API (bypasses RLS)
+  const fetchUserRole = async () => {
     try {
-      const { data, error } = await supabase
-        .from('users')
-        .select('role')
-        .eq('id', userId)
-        .single()
-
-      if (error) {
-        console.error('Error fetching user role:', error)
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session?.access_token) {
         return null
       }
+
+      const response = await fetch('/api/users/role', {
+        headers: {
+          'Authorization': `Bearer ${session.access_token}`
+        }
+      })
+
+      if (!response.ok) {
+        console.error('Error fetching user role:', response.statusText)
+        return null
+      }
+
+      const data = await response.json()
       return data?.role || null
     } catch (err) {
       console.error('Error fetching user role:', err)
@@ -51,7 +58,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (initialSession?.user) {
           setSession(initialSession)
           setUser(initialSession.user)
-          const userRole = await fetchUserRole(initialSession.user.id)
+          const userRole = await fetchUserRole()
           setRole(userRole)
         }
       } catch (error) {
@@ -70,7 +77,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(currentSession?.user || null)
 
         if (currentSession?.user) {
-          const userRole = await fetchUserRole(currentSession.user.id)
+          const userRole = await fetchUserRole()
           setRole(userRole)
         } else {
           setRole(null)
