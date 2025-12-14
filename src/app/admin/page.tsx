@@ -380,33 +380,33 @@ export default function Admin() {
                 ) : (
                   <div className="space-y-4">
                     {members.map((member) => (
-                      <div key={member.id} className="group p-6 rounded-2xl bg-[#fafafa] hover:bg-[#f5f5f7] transition-colors duration-300">
+                      <div key={member.id} className="group p-6 rounded-2xl bg-[var(--md-sys-color-surface-bright)] hover:bg-[var(--md-sys-color-surface-dim)] transition-colors duration-300">
                         <div className="flex items-start justify-between">
                           <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#E3F2FF] to-[#f0f0f0] flex items-center justify-center">
-                              <span className="text-lg font-semibold text-[#0A84FF]">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--md-sys-color-primary-container)] to-[var(--md-sys-color-surface-container)] flex items-center justify-center">
+                              <span className="text-lg font-semibold text-[var(--md-sys-color-primary)]">
                                 {member.first_name?.charAt(0)}{member.last_name?.charAt(0)}
                               </span>
                             </div>
                             <div>
-                              <h3 className="text-base font-semibold text-[#1C1C1E]">
+                              <h3 className="text-base font-semibold text-[var(--md-sys-color-on-surface)]">
                                 {member.first_name} {member.last_name}
                               </h3>
-                              <p className="text-sm text-[#86868b]">{member.email}</p>
+                              <p className="text-sm text-[var(--md-sys-color-on-surface-muted)]">{member.email}</p>
                             </div>
                           </div>
                           <div className="flex items-center gap-3">
                             {updatingMemberStatus === member.id ? (
-                              <div className="w-5 h-5 border-2 border-[#0A84FF] border-t-transparent rounded-full animate-spin" />
+                              <div className="w-5 h-5 border-2 border-[var(--md-sys-color-primary)] border-t-transparent rounded-full animate-spin" />
                             ) : (
-                              <div className="flex items-center gap-2 p-1 bg-[#f0f0f0] rounded-xl">
+                              <div className="flex items-center gap-2 p-1 bg-[var(--md-sys-color-surface-container)] rounded-xl">
                                 <button
                                   onClick={() => updateMemberStatus(member.id!, 'approved')}
                                   disabled={member.status === 'approved'}
                                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
                                     member.status === 'approved'
-                                      ? 'bg-white text-[#30D158] shadow-sm'
-                                      : 'text-[#86868b] hover:text-[#30D158] hover:bg-white/50'
+                                      ? 'bg-[var(--md-sys-color-surface-bright)] text-[var(--md-sys-color-tertiary)] shadow-sm'
+                                      : 'text-[var(--md-sys-color-on-surface-muted)] hover:text-[var(--md-sys-color-tertiary)] hover:bg-[var(--md-sys-color-surface-bright)]/50'
                                   } disabled:cursor-default`}
                                 >
                                   Approve
@@ -416,8 +416,8 @@ export default function Admin() {
                                   disabled={member.status === 'rejected'}
                                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
                                     member.status === 'rejected'
-                                      ? 'bg-white text-[#FF6B6B] shadow-sm'
-                                      : 'text-[#86868b] hover:text-[#FF6B6B] hover:bg-white/50'
+                                      ? 'bg-[var(--md-sys-color-surface-bright)] text-[var(--md-sys-color-accent)] shadow-sm'
+                                      : 'text-[var(--md-sys-color-on-surface-muted)] hover:text-[var(--md-sys-color-accent)] hover:bg-[var(--md-sys-color-surface-bright)]/50'
                                   } disabled:cursor-default`}
                                 >
                                   Reject
@@ -427,22 +427,22 @@ export default function Admin() {
                             <StatusBadge status={member.status || 'pending'} />
                           </div>
                         </div>
-                        <div className="mt-4 pt-4 border-t border-[#e8e8ed] flex flex-wrap gap-6 text-sm">
+                        <div className="mt-4 pt-4 border-t border-[var(--md-sys-color-outline-variant)] flex flex-wrap gap-6 text-sm">
                           {member.phone && (
                             <div>
-                              <span className="text-[#86868b]">Phone: </span>
-                              <span className="text-[#1C1C1E]">{member.phone}</span>
+                              <span className="text-[var(--md-sys-color-on-surface-muted)]">Phone: </span>
+                              <span className="text-[var(--md-sys-color-on-surface)]">{member.phone}</span>
                             </div>
                           )}
                           {member.interest && (
                             <div>
-                              <span className="text-[#86868b]">Interest: </span>
-                              <span className="text-[#1C1C1E] capitalize">{member.interest}</span>
+                              <span className="text-[var(--md-sys-color-on-surface-muted)]">Interest: </span>
+                              <span className="text-[var(--md-sys-color-on-surface)] capitalize">{member.interest}</span>
                             </div>
                           )}
                           <div>
-                            <span className="text-[#86868b]">Joined: </span>
-                            <span className="text-[#1C1C1E]">{formatDate(member.created_at)}</span>
+                            <span className="text-[var(--md-sys-color-on-surface-muted)]">Joined: </span>
+                            <span className="text-[var(--md-sys-color-on-surface)]">{formatDate(member.created_at)}</span>
                           </div>
                         </div>
                       </div>
@@ -462,35 +462,35 @@ export default function Admin() {
                 ) : (
                   <div className="space-y-4">
                     {donations.map((donation) => (
-                      <div key={donation.id} className="group p-6 rounded-2xl bg-[#fafafa] hover:bg-[#f5f5f7] transition-colors duration-300">
+                      <div key={donation.id} className="group p-6 rounded-2xl bg-[var(--md-sys-color-surface-bright)] hover:bg-[var(--md-sys-color-surface-dim)] transition-colors duration-300">
                         <div className="flex items-start justify-between">
                           <div>
-                            <h3 className="text-base font-semibold text-[#1C1C1E]">{donation.donor_name}</h3>
-                            <p className="text-sm text-[#86868b]">{donation.donor_email}</p>
+                            <h3 className="text-base font-semibold text-[var(--md-sys-color-on-surface)]">{donation.donor_name}</h3>
+                            <p className="text-sm text-[var(--md-sys-color-on-surface-muted)]">{donation.donor_email}</p>
                           </div>
                           <div className="text-right">
-                            <p className="text-xl font-semibold text-[#30D158]">
+                            <p className="text-xl font-semibold text-[var(--md-sys-color-tertiary)]">
                               {donation.currency || '₹'}{donation.amount?.toLocaleString('en-IN')}
                             </p>
                             <StatusBadge status={donation.status || 'pending'} />
                           </div>
                         </div>
-                        <div className="mt-4 pt-4 border-t border-[#e8e8ed] flex flex-wrap gap-6 text-sm">
+                        <div className="mt-4 pt-4 border-t border-[var(--md-sys-color-outline-variant)] flex flex-wrap gap-6 text-sm">
                           {donation.method && (
                             <div>
-                              <span className="text-[#86868b]">Method: </span>
-                              <span className="text-[#1C1C1E] capitalize">{donation.method}</span>
+                              <span className="text-[var(--md-sys-color-on-surface-muted)]">Method: </span>
+                              <span className="text-[var(--md-sys-color-on-surface)] capitalize">{donation.method}</span>
                             </div>
                           )}
                           {donation.transaction_id && (
                             <div>
-                              <span className="text-[#86868b]">Transaction: </span>
-                              <span className="text-[#1C1C1E] font-mono text-xs">{donation.transaction_id}</span>
+                              <span className="text-[var(--md-sys-color-on-surface-muted)]">Transaction: </span>
+                              <span className="text-[var(--md-sys-color-on-surface)] font-mono text-xs">{donation.transaction_id}</span>
                             </div>
                           )}
                           <div>
-                            <span className="text-[#86868b]">Date: </span>
-                            <span className="text-[#1C1C1E]">{formatDate(donation.created_at)}</span>
+                            <span className="text-[var(--md-sys-color-on-surface-muted)]">Date: </span>
+                            <span className="text-[var(--md-sys-color-on-surface)]">{formatDate(donation.created_at)}</span>
                           </div>
                         </div>
                       </div>
@@ -510,31 +510,31 @@ export default function Admin() {
                 ) : (
                   <div className="space-y-4">
                     {events.map((event) => (
-                      <div key={event.id} className="group p-6 rounded-2xl bg-[#fafafa] hover:bg-[#f5f5f7] transition-colors duration-300">
+                      <div key={event.id} className="group p-6 rounded-2xl bg-[var(--md-sys-color-surface-bright)] hover:bg-[var(--md-sys-color-surface-dim)] transition-colors duration-300">
                         <div className="flex items-start justify-between">
                           <div>
-                            <span className="inline-block px-3 py-1 text-xs font-medium text-[#0A84FF] bg-[#E3F2FF] rounded-full mb-2">
+                            <span className="inline-block px-3 py-1 text-xs font-medium text-[var(--md-sys-color-primary)] bg-[var(--md-sys-color-primary-container)] rounded-full mb-2">
                               {event.event_name}
                             </span>
-                            <h3 className="text-base font-semibold text-[#1C1C1E]">{event.participant_name}</h3>
-                            <p className="text-sm text-[#86868b]">{event.participant_email}</p>
+                            <h3 className="text-base font-semibold text-[var(--md-sys-color-on-surface)]">{event.participant_name}</h3>
+                            <p className="text-sm text-[var(--md-sys-color-on-surface-muted)]">{event.participant_email}</p>
                           </div>
                           <StatusBadge status={event.status || 'registered'} />
                         </div>
-                        <div className="mt-4 pt-4 border-t border-[#e8e8ed] flex flex-wrap gap-6 text-sm">
+                        <div className="mt-4 pt-4 border-t border-[var(--md-sys-color-outline-variant)] flex flex-wrap gap-6 text-sm">
                           {event.participant_phone && (
                             <div>
-                              <span className="text-[#86868b]">Phone: </span>
-                              <span className="text-[#1C1C1E]">{event.participant_phone}</span>
+                              <span className="text-[var(--md-sys-color-on-surface-muted)]">Phone: </span>
+                              <span className="text-[var(--md-sys-color-on-surface)]">{event.participant_phone}</span>
                             </div>
                           )}
                           <div>
-                            <span className="text-[#86868b]">Guests: </span>
-                            <span className="text-[#1C1C1E]">{event.num_guests || 0}</span>
+                            <span className="text-[var(--md-sys-color-on-surface-muted)]">Guests: </span>
+                            <span className="text-[var(--md-sys-color-on-surface)]">{event.num_guests || 0}</span>
                           </div>
                           <div>
-                            <span className="text-[#86868b]">Registered: </span>
-                            <span className="text-[#1C1C1E]">{formatDate(event.created_at)}</span>
+                            <span className="text-[var(--md-sys-color-on-surface-muted)]">Registered: </span>
+                            <span className="text-[var(--md-sys-color-on-surface)]">{formatDate(event.created_at)}</span>
                           </div>
                         </div>
                       </div>
@@ -554,28 +554,28 @@ export default function Admin() {
                 ) : (
                   <div className="space-y-4">
                     {messages.map((message) => (
-                      <div key={message.id} className="group p-6 rounded-2xl bg-[#fafafa] hover:bg-[#f5f5f7] transition-colors duration-300">
+                      <div key={message.id} className="group p-6 rounded-2xl bg-[var(--md-sys-color-surface-bright)] hover:bg-[var(--md-sys-color-surface-dim)] transition-colors duration-300">
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#FFF4E0] to-[#f0f0f0] flex items-center justify-center">
-                              <span className="text-lg font-semibold text-[#FF9F0A]">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--md-sys-color-secondary-container)] to-[var(--md-sys-color-surface-container)] flex items-center justify-center">
+                              <span className="text-lg font-semibold text-[var(--md-sys-color-secondary)]">
                                 {message.name?.charAt(0)}
                               </span>
                             </div>
                             <div>
-                              <h3 className="text-base font-semibold text-[#1C1C1E]">{message.name}</h3>
-                              <p className="text-sm text-[#86868b]">{message.email}</p>
+                              <h3 className="text-base font-semibold text-[var(--md-sys-color-on-surface)]">{message.name}</h3>
+                              <p className="text-sm text-[var(--md-sys-color-on-surface-muted)]">{message.email}</p>
                             </div>
                           </div>
                           <div className="text-right">
                             <StatusBadge status={message.status || 'unread'} />
-                            <p className="text-xs text-[#86868b] mt-1">{formatDate(message.created_at)} {formatTime(message.created_at)}</p>
+                            <p className="text-xs text-[var(--md-sys-color-on-surface-muted)] mt-1">{formatDate(message.created_at)} {formatTime(message.created_at)}</p>
                           </div>
                         </div>
                         {message.subject && (
-                          <p className="text-sm font-medium text-[#1C1C1E] mb-2">{message.subject}</p>
+                          <p className="text-sm font-medium text-[var(--md-sys-color-on-surface)] mb-2">{message.subject}</p>
                         )}
-                        <p className="text-sm text-[#5f6368] leading-relaxed">{message.message}</p>
+                        <p className="text-sm text-[var(--md-sys-color-on-surface-variant)] leading-relaxed">{message.message}</p>
                       </div>
                     ))}
                   </div>
@@ -593,35 +593,35 @@ export default function Admin() {
                 ) : (
                   <div className="space-y-4">
                     {users.map((appUser) => (
-                      <div key={appUser.id} className="group p-6 rounded-2xl bg-[#fafafa] hover:bg-[#f5f5f7] transition-colors duration-300">
+                      <div key={appUser.id} className="group p-6 rounded-2xl bg-[var(--md-sys-color-surface-bright)] hover:bg-[var(--md-sys-color-surface-dim)] transition-colors duration-300">
                         <div className="flex items-start justify-between">
                           <div className="flex items-center gap-4">
                             <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
                               appUser.role === 'admin'
-                                ? 'bg-gradient-to-br from-[#FFF4E0] to-[#f0f0f0]'
-                                : 'bg-gradient-to-br from-[#E3F2FF] to-[#f0f0f0]'
+                                ? 'bg-gradient-to-br from-[var(--md-sys-color-secondary-container)] to-[var(--md-sys-color-surface-container)]'
+                                : 'bg-gradient-to-br from-[var(--md-sys-color-primary-container)] to-[var(--md-sys-color-surface-container)]'
                             }`}>
                               <span className={`text-lg font-semibold ${
-                                appUser.role === 'admin' ? 'text-[#FF9F0A]' : 'text-[#0A84FF]'
+                                appUser.role === 'admin' ? 'text-[var(--md-sys-color-secondary)]' : 'text-[var(--md-sys-color-primary)]'
                               }`}>
                                 {appUser.email?.charAt(0).toUpperCase()}
                               </span>
                             </div>
                             <div>
-                              <h3 className="text-base font-semibold text-[#1C1C1E]">{appUser.email}</h3>
-                              <p className="text-sm text-[#86868b]">Joined {formatDate(appUser.created_at)}</p>
+                              <h3 className="text-base font-semibold text-[var(--md-sys-color-on-surface)]">{appUser.email}</h3>
+                              <p className="text-sm text-[var(--md-sys-color-on-surface-muted)]">Joined {formatDate(appUser.created_at)}</p>
                             </div>
                           </div>
                           <div className="flex items-center gap-3">
                             {/* Role Toggle */}
-                            <div className="flex items-center gap-2 p-1 bg-[#f0f0f0] rounded-xl">
+                            <div className="flex items-center gap-2 p-1 bg-[var(--md-sys-color-surface-container)] rounded-xl">
                               <button
                                 onClick={() => updateUserRole(appUser.id, 'member')}
                                 disabled={updatingRole === appUser.id || appUser.id === user?.id}
                                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
                                   appUser.role === 'member'
-                                    ? 'bg-white text-[#1C1C1E] shadow-sm'
-                                    : 'text-[#86868b] hover:text-[#1C1C1E]'
+                                    ? 'bg-[var(--md-sys-color-surface-bright)] text-[var(--md-sys-color-on-surface)] shadow-sm'
+                                    : 'text-[var(--md-sys-color-on-surface-muted)] hover:text-[var(--md-sys-color-on-surface)]'
                                 } disabled:opacity-50 disabled:cursor-not-allowed`}
                               >
                                 Member
@@ -631,20 +631,20 @@ export default function Admin() {
                                 disabled={updatingRole === appUser.id || appUser.id === user?.id}
                                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
                                   appUser.role === 'admin'
-                                    ? 'bg-white text-[#FF9F0A] shadow-sm'
-                                    : 'text-[#86868b] hover:text-[#1C1C1E]'
+                                    ? 'bg-[var(--md-sys-color-surface-bright)] text-[var(--md-sys-color-secondary)] shadow-sm'
+                                    : 'text-[var(--md-sys-color-on-surface-muted)] hover:text-[var(--md-sys-color-on-surface)]'
                                 } disabled:opacity-50 disabled:cursor-not-allowed`}
                               >
                                 Admin
                               </button>
                             </div>
                             {updatingRole === appUser.id && (
-                              <div className="w-5 h-5 border-2 border-[#0A84FF] border-t-transparent rounded-full animate-spin" />
+                              <div className="w-5 h-5 border-2 border-[var(--md-sys-color-primary)] border-t-transparent rounded-full animate-spin" />
                             )}
                           </div>
                         </div>
                         {appUser.id === user?.id && (
-                          <p className="mt-3 text-xs text-[#86868b]">This is your account - role cannot be changed</p>
+                          <p className="mt-3 text-xs text-[var(--md-sys-color-on-surface-muted)]">This is your account - role cannot be changed</p>
                         )}
                       </div>
                     ))}
