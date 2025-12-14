@@ -17,10 +17,10 @@ const founders = [
     color: 'from-[#fff8e1] to-[#ffecb3]',
   },
   {
-    name: 'Mayank Tyagi',
+    name: 'Awaiting Approval',
     role: 'Co-Founder',
-    initial: 'MT',
-    bio: 'Strategic thinking and organizational excellence help translate the foundation\'s vision into sustainable, impactful programs.',
+    initial: '??',
+    bio: 'A dedicated co-founder whose strategic thinking and organizational excellence help translate the foundation\'s vision into sustainable, impactful programs. Name pending organizational approval.',
     color: 'from-[#e8f5e9] to-[#c8e6c9]',
   },
   {
