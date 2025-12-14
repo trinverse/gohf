@@ -33,10 +33,17 @@ export default function Header() {
   }, [])
 
   const handleSignOut = async () => {
-    await signOut()
-    setMobileMenuOpen(false)
-    router.push('/')
-    router.refresh()
+    console.log('Logout clicked')
+    try {
+      await signOut()
+      console.log('SignOut completed')
+      setMobileMenuOpen(false)
+      window.location.href = '/'
+    } catch (error) {
+      console.error('Logout error:', error)
+      // Force redirect even on error
+      window.location.href = '/'
+    }
   }
 
   return (
@@ -85,6 +92,7 @@ export default function Header() {
             {/* Auth Buttons - Always show Login unless user is logged in */}
             {user ? (
               <button
+                type="button"
                 onClick={handleSignOut}
                 className="ml-2 px-4 py-2 text-sm font-medium text-[var(--md-sys-color-on-surface-variant)] hover:text-[var(--md-sys-color-accent)] rounded-full hover:bg-[var(--md-sys-color-error-container)] transition-all duration-300"
               >
@@ -159,6 +167,7 @@ export default function Header() {
             {/* Auth - Mobile - Always show Login unless user is logged in */}
             {user ? (
               <button
+                type="button"
                 onClick={handleSignOut}
                 className="block w-full text-left px-4 py-3 text-base font-medium text-[var(--md-sys-color-on-surface-variant)] hover:text-[var(--md-sys-color-accent)] hover:bg-[var(--md-sys-color-error-container)] rounded-2xl transition-all duration-300"
               >
