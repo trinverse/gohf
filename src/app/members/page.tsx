@@ -32,8 +32,8 @@ const members: Member[] = [
     image: '/images/founders/deepak-chauhan.jpeg',
   },
   {
-    id: 'rajni-dhani',
-    name: 'Rajni Dhani',
+    id: 'rajni-dani',
+    name: 'Rajni Dani',
     role: 'Co-Founder',
     category: 'founding',
     initial: 'RD',
@@ -41,7 +41,7 @@ const members: Member[] = [
     joinedYear: '2025',
     contributions: ['Welfare Programs', 'Volunteer Coordination', 'Event Management'],
     color: 'from-[#FFF4E0] to-[#FFE4B3]',
-    image: '/images/founders/rajni-dhani.jpeg',
+    image: '/images/founders/rajni-dani.jpeg',
   },
   {
     id: 'awaiting-approval',
