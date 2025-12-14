@@ -17,6 +17,7 @@ const founders = [
     initial: 'RD',
     bio: 'With deep commitment to community service, Rajni ensures every program truly serves the needs of the children we support.',
     color: 'from-[#fff8e1] to-[#ffecb3]',
+    image: '/images/founders/rajni-dhani.jpeg',
   },
   {
     name: 'Awaiting Approval',

@@ -41,6 +41,7 @@ const members: Member[] = [
     joinedYear: '2025',
     contributions: ['Welfare Programs', 'Volunteer Coordination', 'Event Management'],
     color: 'from-[#FFF4E0] to-[#FFE4B3]',
+    image: '/images/founders/rajni-dhani.jpeg',
   },
   {
     id: 'awaiting-approval',
