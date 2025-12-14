@@ -1,150 +1,76 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
+import { useState, useEffect } from 'react'
 import Hero from '@/components/Hero'
 
-interface Member {
+interface ApprovedMember {
   id: string
-  name: string
-  role: string
-  category: 'founding' | 'core' | 'volunteer'
-  initial: string
-  bio: string
-  location?: string
-  joinedYear: string
-  contributions: string[]
-  color: string
-  image?: string
+  first_name: string
+  last_name: string
+  email: string
+  phone?: string
+  interest?: string
+  message?: string
+  status: string
+  created_at: string
 }
 
-const members: Member[] = [
-  {
-    id: 'deepak-chauhan',
-    name: 'Deepak Chauhan',
-    role: 'Co-Founder',
-    category: 'founding',
-    initial: 'DC',
-    bio: 'A passionate advocate for education and child welfare, Deepak brings his experience and dedication to creating opportunities for underprivileged children. His vision for the foundation stems from his own transformative JNV experience.',
-    joinedYear: '2025',
-    contributions: ['Strategic Planning', 'Community Outreach', 'Program Development'],
-    color: 'from-[#E3F2FF] to-[#B3D9FF]',
-    image: '/images/founders/deepak-chauhan.jpeg',
-  },
-  {
-    id: 'rajni-dani',
-    name: 'Rajni Dani',
-    role: 'Co-Founder',
-    category: 'founding',
-    initial: 'RD',
-    bio: 'With deep commitment to community service, Rajni ensures every program truly serves the needs of the children we support. Her empathetic approach and organizational skills drive the foundation\'s welfare initiatives.',
-    joinedYear: '2025',
-    contributions: ['Welfare Programs', 'Volunteer Coordination', 'Event Management'],
-    color: 'from-[#FFF4E0] to-[#FFE4B3]',
-    image: '/images/founders/rajni-dani.jpeg',
-  },
-  {
-    id: 'awaiting-approval',
-    name: 'Awaiting Approval',
-    role: 'Co-Founder',
-    category: 'founding',
-    initial: '??',
-    bio: 'A dedicated co-founder whose strategic thinking and organizational excellence help translate the foundation\'s vision into sustainable, impactful programs. Their analytical mindset ensures efficient resource allocation and measurable outcomes. Name pending organizational approval.',
-    joinedYear: '2025',
-    contributions: ['Operations Management', 'Financial Planning', 'Partnership Development'],
-    color: 'from-[#E8FAE8] to-[#B8F0B8]',
-  },
-  {
-    id: 'ashish-tyagi',
-    name: 'Ashish Tyagi',
-    role: 'Co-Founder',
-    category: 'founding',
-    initial: 'AT',
-    bio: 'Driven by belief that every child deserves a chance, Ashish works to expand the foundation\'s reach through technology and innovation. His technical expertise powers the digital presence and outreach initiatives.',
-    joinedYear: '2025',
-    contributions: ['Technology & Innovation', 'Digital Strategy', 'Mentorship Programs'],
-    color: 'from-[#FCE4EC] to-[#F8BBD9]',
-    image: '/images/founders/ashish-tyagi.jpg',
-  },
-]
-
-function MemberCard({ member, isExpanded, onToggle }: { member: Member; isExpanded: boolean; onToggle: () => void }) {
-  return (
-    <div
-      className={`group relative rounded-3xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all duration-500 overflow-hidden ${
-        isExpanded ? 'shadow-[0_8px_30px_rgba(0,0,0,0.08)]' : 'hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]'
-      }`}
-    >
-      {/* Collapsed View - Always visible */}
-      <button
-        onClick={onToggle}
-        className="w-full p-6 flex items-center gap-5 text-left transition-colors duration-300 hover:bg-[#fafafa]"
-      >
-        <div className={`flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center transition-transform duration-500 group-hover:scale-105 overflow-hidden`}>
-          {member.image ? (
-            <Image
-              src={member.image}
-              alt={member.name}
-              width={64}
-              height={64}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <span className="text-xl font-semibold text-[#1C1C1E]">{member.initial}</span>
-          )}
-        </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="text-lg font-semibold text-[#1C1C1E] tracking-tight">{member.name}</h3>
-          <p className="text-sm font-medium text-[#FF9F0A]">{member.role}</p>
-        </div>
-        <div className={`w-10 h-10 rounded-full bg-[#f8f9fa] flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
-          <svg className="w-5 h-5 text-[#5f6368]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
-      </button>
-
-      {/* Expanded View */}
-      <div
-        className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.2,0,0,1)] ${
-          isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="px-6 pb-6 pt-2 border-t border-[#f1f3f4]">
-          <p className="text-[#5f6368] leading-relaxed">{member.bio}</p>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {member.contributions.map((contribution) => (
-              <span
-                key={contribution}
-                className="px-3 py-1.5 text-xs font-medium text-[#0A84FF] bg-[#E3F2FF] rounded-full"
-              >
-                {contribution}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-6 pt-4 border-t border-[#f1f3f4] flex items-center gap-6 text-sm text-[#5f6368]">
-            <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-[#30D158]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <span>Member since {member.joinedYear}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+interface AppUser {
+  id: string
+  email: string
+  role: string
+  created_at: string
 }
 
 export default function Members() {
-  const [expandedId, setExpandedId] = useState<string | null>(null)
+  const [approvedMembers, setApprovedMembers] = useState<ApprovedMember[]>([])
+  const [users, setUsers] = useState<AppUser[]>([])
+  const [loading, setLoading] = useState(true)
 
-  const foundingMembers = members.filter(m => m.category === 'founding')
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [membersRes, usersRes] = await Promise.all([
+          fetch('/api/members'),
+          fetch('/api/users')
+        ])
 
-  const toggleMember = (id: string) => {
-    setExpandedId(expandedId === id ? null : id)
+        const membersData = await membersRes.json()
+        const usersData = await usersRes.json()
+
+        if (membersData.data) {
+          setApprovedMembers(membersData.data.filter((m: ApprovedMember) => m.status === 'approved'))
+        }
+        if (usersData.data) {
+          setUsers(usersData.data)
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }, [])
+
+  const getInterestLabel = (interest: string) => {
+    const labels: Record<string, string> = {
+      volunteer: 'Volunteer',
+      donate: 'Donor',
+      mentor: 'Mentor',
+      partner: 'Partner',
+    }
+    return labels[interest] || 'Member'
+  }
+
+  const getInterestColor = (interest: string) => {
+    const colors: Record<string, string> = {
+      volunteer: 'from-[#E8FAE8] to-[#B8F0B8]',
+      donate: 'from-[#FFF4E0] to-[#FFE4B3]',
+      mentor: 'from-[#E3F2FF] to-[#B3D9FF]',
+      partner: 'from-[#FCE4EC] to-[#F8BBD9]',
+    }
+    return colors[interest] || 'from-[#f5f5f7] to-[#e8e8ed]'
   }
 
   return (
@@ -155,39 +81,150 @@ export default function Members() {
         minimal
       />
 
-      {/* Founding Members Section */}
+      {/* Members Section */}
       <section className="py-16 px-6">
         <div className="mx-auto max-w-4xl">
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-[#E3F2FF] flex items-center justify-center">
-                <svg className="w-5 h-5 text-[#0A84FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+              <div className="w-10 h-10 rounded-xl bg-[#E8FAE8] flex items-center justify-center">
+                <svg className="w-5 h-5 text-[#30D158]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
                 </svg>
               </div>
-              <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">Est. 2025</span>
+              <span className="text-sm font-medium text-[#30D158] tracking-wide uppercase">Our Community</span>
             </div>
-            <h2 className="text-3xl font-semibold text-[#1C1C1E] tracking-tight">Founding Members</h2>
+            <h2 className="text-3xl font-semibold text-[#1C1C1E] tracking-tight">Community Members</h2>
             <p className="mt-3 text-[#5f6368]">
-              The visionaries who came together to establish Guardians of Hope Foundation.
+              Dedicated individuals who have joined our mission to make a difference.
             </p>
           </div>
 
-          <div className="space-y-4">
-            {foundingMembers.map((member) => (
-              <MemberCard
-                key={member.id}
-                member={member}
-                isExpanded={expandedId === member.id}
-                onToggle={() => toggleMember(member.id)}
-              />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex flex-col items-center justify-center py-16">
+              <div className="w-10 h-10 border-2 border-[#30D158] border-t-transparent rounded-full animate-spin" />
+              <p className="mt-4 text-[#86868b]">Loading members...</p>
+            </div>
+          ) : approvedMembers.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-16 text-center">
+              <div className="w-16 h-16 rounded-full bg-[#f5f5f7] flex items-center justify-center mb-4">
+                <svg className="w-8 h-8 text-[#86868b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-[#1C1C1E]">No members yet</h3>
+              <p className="mt-2 text-[#86868b] max-w-sm">
+                Be the first to join our community and help make a difference.
+              </p>
+            </div>
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-2">
+              {approvedMembers.map((member) => (
+                <div
+                  key={member.id}
+                  className="group p-6 rounded-2xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${getInterestColor(member.interest || '')} flex items-center justify-center transition-transform duration-500 group-hover:scale-105`}>
+                      <span className="text-lg font-semibold text-[#1C1C1E]">
+                        {member.first_name?.charAt(0)}{member.last_name?.charAt(0)}
+                      </span>
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-semibold text-[#1C1C1E] tracking-tight">
+                        {member.first_name} {member.last_name}
+                      </h3>
+                      <p className="text-sm font-medium text-[#0A84FF]">
+                        {getInterestLabel(member.interest || '')}
+                      </p>
+                    </div>
+                  </div>
+                  {member.message && (
+                    <p className="mt-4 text-sm text-[#5f6368] leading-relaxed line-clamp-2">
+                      &ldquo;{member.message}&rdquo;
+                    </p>
+                  )}
+                  <div className="mt-4 pt-4 border-t border-[#f1f3f4] flex items-center gap-2 text-xs text-[#86868b]">
+                    <svg className="w-4 h-4 text-[#30D158]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span>
+                      Joined {new Date(member.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
+      {/* Registered Users Section */}
+      {!loading && users.length > 0 && (
+        <section className="py-16 px-6 bg-[#fafafa]">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-10">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-xl bg-[#E3F2FF] flex items-center justify-center">
+                  <svg className="w-5 h-5 text-[#0A84FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                  </svg>
+                </div>
+                <span className="text-sm font-medium text-[#0A84FF] tracking-wide uppercase">Registered</span>
+              </div>
+              <h2 className="text-3xl font-semibold text-[#1C1C1E] tracking-tight">Users</h2>
+              <p className="mt-3 text-[#5f6368]">
+                People who have created accounts on our platform.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {users.map((user) => (
+                <div
+                  key={user.id}
+                  className="group p-5 rounded-2xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:scale-105 ${
+                      user.role === 'admin'
+                        ? 'bg-gradient-to-br from-[#FFF4E0] to-[#FFE4B3]'
+                        : 'bg-gradient-to-br from-[#E3F2FF] to-[#B3D9FF]'
+                    }`}>
+                      <span className={`text-base font-semibold ${
+                        user.role === 'admin' ? 'text-[#FF9F0A]' : 'text-[#0A84FF]'
+                      }`}>
+                        {user.email?.charAt(0).toUpperCase()}
+                      </span>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-medium text-[#1C1C1E] truncate">
+                        {user.email}
+                      </p>
+                      <span className={`inline-flex px-2 py-0.5 text-xs font-medium rounded-md capitalize ${
+                        user.role === 'admin'
+                          ? 'bg-[#FFF4E0] text-[#FF9F0A]'
+                          : 'bg-[#E3F2FF] text-[#0A84FF]'
+                      }`}>
+                        {user.role}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="mt-3 pt-3 border-t border-[#f1f3f4] flex items-center gap-2 text-xs text-[#86868b]">
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span>
+                      {new Date(user.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Join CTA */}
-      <section className="py-24 px-6 bg-[#fafafa]">
+      <section className={`py-24 px-6 ${users.length > 0 ? '' : 'bg-[#fafafa]'}`}>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-semibold text-[#1C1C1E] tracking-tight">
             Become a Member

@@ -24,6 +24,7 @@ export default function Admin() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [updatingRole, setUpdatingRole] = useState<string | null>(null)
+  const [updatingMemberStatus, setUpdatingMemberStatus] = useState<string | null>(null)
 
   const { user, role, loading: authLoading } = useAuth()
   const router = useRouter()
@@ -230,6 +231,30 @@ export default function Admin() {
     }
   }
 
+  const updateMemberStatus = async (memberId: string, newStatus: string) => {
+    setUpdatingMemberStatus(memberId)
+    try {
+      const response = await fetch('/api/members', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: memberId, status: newStatus }),
+      })
+      const result = await response.json()
+
+      if (result.error) {
+        setError(result.error)
+      } else {
+        // Update local state
+        setMembers(members.map(m => m.id === memberId ? { ...m, status: newStatus } : m))
+      }
+    } catch (err) {
+      console.error('Error updating member status:', err)
+      setError('Failed to update member status')
+    } finally {
+      setUpdatingMemberStatus(null)
+    }
+  }
+
   const currentTab = tabs.find(t => t.id === activeTab)
 
   const totalDonations = donations.reduce((sum, d) => sum + (d.amount || 0), 0)
@@ -370,7 +395,37 @@ export default function Admin() {
                               <p className="text-sm text-[#86868b]">{member.email}</p>
                             </div>
                           </div>
-                          <StatusBadge status={member.status || 'pending'} />
+                          <div className="flex items-center gap-3">
+                            {updatingMemberStatus === member.id ? (
+                              <div className="w-5 h-5 border-2 border-[#0A84FF] border-t-transparent rounded-full animate-spin" />
+                            ) : (
+                              <div className="flex items-center gap-2 p-1 bg-[#f0f0f0] rounded-xl">
+                                <button
+                                  onClick={() => updateMemberStatus(member.id!, 'approved')}
+                                  disabled={member.status === 'approved'}
+                                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                                    member.status === 'approved'
+                                      ? 'bg-white text-[#30D158] shadow-sm'
+                                      : 'text-[#86868b] hover:text-[#30D158] hover:bg-white/50'
+                                  } disabled:cursor-default`}
+                                >
+                                  Approve
+                                </button>
+                                <button
+                                  onClick={() => updateMemberStatus(member.id!, 'rejected')}
+                                  disabled={member.status === 'rejected'}
+                                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                                    member.status === 'rejected'
+                                      ? 'bg-white text-[#FF6B6B] shadow-sm'
+                                      : 'text-[#86868b] hover:text-[#FF6B6B] hover:bg-white/50'
+                                  } disabled:cursor-default`}
+                                >
+                                  Reject
+                                </button>
+                              </div>
+                            )}
+                            <StatusBadge status={member.status || 'pending'} />
+                          </div>
                         </div>
                         <div className="mt-4 pt-4 border-t border-[#e8e8ed] flex flex-wrap gap-6 text-sm">
                           {member.phone && (
@@ -627,6 +682,7 @@ function StatusBadge({ status }: { status: string }) {
     read: 'bg-[#f0f0f0] text-[#86868b]',
     cancelled: 'bg-[#FCE4EC] text-[#FF6B6B]',
     failed: 'bg-[#FCE4EC] text-[#FF6B6B]',
+    rejected: 'bg-[#FCE4EC] text-[#FF6B6B]',
     admin: 'bg-[#FFF4E0] text-[#FF9F0A]',
     member: 'bg-[#E3F2FF] text-[#0A84FF]',
   }
