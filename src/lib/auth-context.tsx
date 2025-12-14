@@ -138,10 +138,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const signOut = async () => {
-    await supabase.auth.signOut()
-    setUser(null)
-    setSession(null)
-    setRole(null)
+    try {
+      const { error } = await supabase.auth.signOut({ scope: 'global' })
+      if (error) {
+        console.error('Error signing out:', error)
+      }
+    } catch (err) {
+      console.error('Error during sign out:', err)
+    } finally {
+      // Clear state regardless of API response
+      setUser(null)
+      setSession(null)
+      setRole(null)
+    }
   }
 
   return (

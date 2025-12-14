@@ -36,6 +36,7 @@ export default function Header() {
     await signOut()
     setMobileMenuOpen(false)
     router.push('/')
+    router.refresh()
   }
 
   return (
