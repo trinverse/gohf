@@ -78,25 +78,21 @@ export default function Header() {
               </Link>
             )}
 
-            {/* Auth Buttons */}
-            {!loading && (
-              <>
-                {user ? (
-                  <button
-                    onClick={handleSignOut}
-                    className="ml-2 px-4 py-2 text-sm font-medium text-[#5f6368] hover:text-[#FF6B6B] rounded-full hover:bg-[#FCE4EC] transition-all duration-300"
-                  >
-                    Logout
-                  </button>
-                ) : (
-                  <Link
-                    href="/login"
-                    className="ml-2 px-4 py-2 text-sm font-medium text-[#5f6368] hover:text-[#0A84FF] rounded-full hover:bg-[#E3F2FF] transition-all duration-300"
-                  >
-                    Login
-                  </Link>
-                )}
-              </>
+            {/* Auth Buttons - Always show Login unless user is logged in */}
+            {user ? (
+              <button
+                onClick={handleSignOut}
+                className="ml-2 px-4 py-2 text-sm font-medium text-[#5f6368] hover:text-[#FF6B6B] rounded-full hover:bg-[#FCE4EC] transition-all duration-300"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                className="ml-2 px-4 py-2 text-sm font-medium text-[#5f6368] hover:text-[#0A84FF] rounded-full hover:bg-[#E3F2FF] transition-all duration-300"
+              >
+                Login
+              </Link>
             )}
 
             <Link
@@ -151,26 +147,22 @@ export default function Header() {
               </Link>
             )}
 
-            {/* Auth - Mobile */}
-            {!loading && (
-              <>
-                {user ? (
-                  <button
-                    onClick={handleSignOut}
-                    className="block w-full text-left px-4 py-3 text-base font-medium text-[#5f6368] hover:text-[#FF6B6B] hover:bg-[#FCE4EC] rounded-2xl transition-all duration-300"
-                  >
-                    Logout
-                  </button>
-                ) : (
-                  <Link
-                    href="/login"
-                    className="block px-4 py-3 text-base font-medium text-[#5f6368] hover:text-[#0A84FF] hover:bg-[#E3F2FF] rounded-2xl transition-all duration-300"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Login
-                  </Link>
-                )}
-              </>
+            {/* Auth - Mobile - Always show Login unless user is logged in */}
+            {user ? (
+              <button
+                onClick={handleSignOut}
+                className="block w-full text-left px-4 py-3 text-base font-medium text-[#5f6368] hover:text-[#FF6B6B] hover:bg-[#FCE4EC] rounded-2xl transition-all duration-300"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                className="block px-4 py-3 text-base font-medium text-[#5f6368] hover:text-[#0A84FF] hover:bg-[#E3F2FF] rounded-2xl transition-all duration-300"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Login
+              </Link>
             )}
 
             <div className="pt-4 px-4">
