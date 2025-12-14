@@ -39,7 +39,7 @@ export default function Events() {
             {upcomingEvents.map((event, index) => (
               <div
                 key={event.title}
-                className="group relative p-8 rounded-3xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-500 overflow-hidden"
+                className="group relative p-8 rounded-3xl bg-[var(--md-sys-color-surface-bright)] shadow-[var(--md-sys-elevation-1)] hover:shadow-[var(--md-sys-elevation-3)] transition-all duration-500 overflow-hidden"
               >
                 <div className="flex items-start justify-between mb-4">
                   <span className="px-3 py-1 text-xs font-medium text-[var(--md-sys-color-primary)] bg-[var(--md-sys-color-primary-container)] rounded-full">
