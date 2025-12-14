@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Hero from '@/components/Hero'
 
 const founders = [
@@ -8,6 +9,7 @@ const founders = [
     initial: 'DC',
     bio: 'A passionate advocate for education and child welfare, Deepak brings his experience and dedication to creating opportunities for underprivileged children.',
     color: 'from-[#e8eaf6] to-[#c5cae9]',
+    image: '/images/founders/deepak-chauhan.jpeg',
   },
   {
     name: 'Rajni Dhani',
@@ -29,6 +31,7 @@ const founders = [
     initial: 'AT',
     bio: 'Driven by belief that every child deserves a chance, Ashish works to expand the foundation\'s reach through technology and innovation.',
     color: 'from-[#fce4ec] to-[#f8bbd0]',
+    image: '/images/founders/ashish-tyagi.jpg',
   },
 ]
 
@@ -51,8 +54,18 @@ export default function Founders() {
                 className="group relative p-8 md:p-10 rounded-3xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-500"
               >
                 <div className="flex items-start gap-6">
-                  <div className={`flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br ${founder.color} flex items-center justify-center transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3`}>
-                    <span className="text-2xl font-semibold text-[#1C1C1E]">{founder.initial}</span>
+                  <div className={`flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br ${founder.color} flex items-center justify-center transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3 overflow-hidden`}>
+                    {founder.image ? (
+                      <Image
+                        src={founder.image}
+                        alt={founder.name}
+                        width={80}
+                        height={80}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-2xl font-semibold text-[#1C1C1E]">{founder.initial}</span>
+                    )}
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="text-2xl font-semibold text-[#1C1C1E] tracking-tight">{founder.name}</h3>

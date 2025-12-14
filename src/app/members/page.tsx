@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Hero from '@/components/Hero'
 
 interface Member {
@@ -14,6 +15,7 @@ interface Member {
   joinedYear: string
   contributions: string[]
   color: string
+  image?: string
 }
 
 const members: Member[] = [
@@ -27,6 +29,7 @@ const members: Member[] = [
     joinedYear: '2025',
     contributions: ['Strategic Planning', 'Community Outreach', 'Program Development'],
     color: 'from-[#E3F2FF] to-[#B3D9FF]',
+    image: '/images/founders/deepak-chauhan.jpeg',
   },
   {
     id: 'rajni-dhani',
@@ -60,6 +63,7 @@ const members: Member[] = [
     joinedYear: '2025',
     contributions: ['Technology & Innovation', 'Digital Strategy', 'Mentorship Programs'],
     color: 'from-[#FCE4EC] to-[#F8BBD9]',
+    image: '/images/founders/ashish-tyagi.jpg',
   },
 ]
 
@@ -75,8 +79,18 @@ function MemberCard({ member, isExpanded, onToggle }: { member: Member; isExpand
         onClick={onToggle}
         className="w-full p-6 flex items-center gap-5 text-left transition-colors duration-300 hover:bg-[#fafafa]"
       >
-        <div className={`flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center transition-transform duration-500 group-hover:scale-105`}>
-          <span className="text-xl font-semibold text-[#1C1C1E]">{member.initial}</span>
+        <div className={`flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center transition-transform duration-500 group-hover:scale-105 overflow-hidden`}>
+          {member.image ? (
+            <Image
+              src={member.image}
+              alt={member.name}
+              width={64}
+              height={64}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <span className="text-xl font-semibold text-[#1C1C1E]">{member.initial}</span>
+          )}
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="text-lg font-semibold text-[#1C1C1E] tracking-tight">{member.name}</h3>
