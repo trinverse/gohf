@@ -6,7 +6,7 @@ import { useAuth } from '@/lib/auth-context'
 
 const navigation = [
   { name: 'About', href: '/about' },
-  // { name: 'Founders', href: '/founders' }, // Hidden temporarily - re-enable when ready
+  { name: 'Founders', href: '/founders' },
   { name: 'Members', href: '/members' },
   { name: 'Events', href: '/events' },
   { name: 'Join Us', href: '/join' },

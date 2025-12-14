@@ -104,12 +104,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-semibold text-[#1C1C1E] tracking-tight">Our Mission</h3>
               <p className="mt-4 text-[#5f6368] leading-relaxed">
-                A united family of JNV alumni, bound by gratitude and purpose—dedicated to transforming
-                lives through education, mentorship, and lifelong support for underprivileged children.
-                Standing shoulder to shoulder with the families left behind by our brave brothers and
-                sisters who served on the frontlines, protecting our borders, we commit to being their
-                strength, their hope, and their extended family. Where education uplifts, sacrifice is
-                honored, and no family ever stands alone.
+                A united family of JNV alumni, bound by gratitude and purpose—dedicated to transforming lives through education, mentorship, and lifelong support for underprivileged children. We stand shoulder to shoulder with the families left behind by our brave brothers and sisters of JNV Bijnor who served on the frontlines, protecting our borders, we commit to being their strength, their hope, and their extended family. Where education uplifts, sacrifice is honored, and no family ever stands alone.
               </p>
             </div>
           </div>
