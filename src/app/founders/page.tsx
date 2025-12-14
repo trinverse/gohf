@@ -52,7 +52,7 @@ export default function Founders() {
             {founders.map((founder, index) => (
               <div
                 key={founder.name}
-                className="group relative p-8 md:p-10 rounded-3xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-500"
+                className="group relative p-8 md:p-10 rounded-3xl bg-[var(--md-sys-color-surface-bright)] shadow-[var(--md-sys-elevation-1)] hover:shadow-[var(--md-sys-elevation-3)] transition-all duration-500"
               >
                 <div className="flex items-start gap-6">
                   <div className={`flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br ${founder.color} flex items-center justify-center transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3 overflow-hidden`}>

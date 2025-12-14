@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Logo from './Logo'
 
 const navigation = {
   main: [
@@ -19,9 +20,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-5">
             <Link href="/" className="inline-flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[var(--md-sys-color-primary)] flex items-center justify-center">
-                <span className="text-[var(--md-sys-color-on-primary)] font-semibold text-sm">GHF</span>
-              </div>
+              <Logo size="md" />
               <div>
                 <span className="text-[var(--md-sys-color-on-surface)] font-semibold tracking-tight block">Guardians of Hope</span>
                 <span className="text-xs text-[var(--md-sys-color-secondary)] font-medium">Where courage meets the care</span>

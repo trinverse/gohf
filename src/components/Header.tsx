@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/lib/auth-context'
 import ThemeToggle from './ThemeToggle'
+import Logo from './Logo'
 
 const navigation = [
   { name: 'About', href: '/about' },
@@ -50,11 +51,9 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="group flex items-center gap-3"
+            className="group flex items-center gap-3 transition-transform duration-300 hover:scale-[1.02]"
           >
-            <div className="w-10 h-10 rounded-2xl bg-[var(--md-sys-color-primary)] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-              <span className="text-[var(--md-sys-color-on-primary)] font-semibold text-sm">GHF</span>
-            </div>
+            <Logo size="md" />
             <div className="hidden sm:block">
               <span className="text-[var(--md-sys-color-on-surface)] font-semibold tracking-tight">Guardians of Hope</span>
             </div>

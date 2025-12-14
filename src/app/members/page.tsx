@@ -121,7 +121,7 @@ export default function Members() {
               {approvedMembers.map((member) => (
                 <div
                   key={member.id}
-                  className="group p-6 rounded-2xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300"
+                  className="group p-6 rounded-2xl bg-[var(--md-sys-color-surface-bright)] shadow-[var(--md-sys-elevation-1)] hover:shadow-[var(--md-sys-elevation-3)] transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
                     <div className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${getInterestColor(member.interest || '')} flex items-center justify-center transition-transform duration-500 group-hover:scale-105`}>
@@ -181,7 +181,7 @@ export default function Members() {
               {users.map((user) => (
                 <div
                   key={user.id}
-                  className="group p-5 rounded-2xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300"
+                  className="group p-5 rounded-2xl bg-[var(--md-sys-color-surface-bright)] shadow-[var(--md-sys-elevation-1)] hover:shadow-[var(--md-sys-elevation-3)] transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
                     <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:scale-105 ${
