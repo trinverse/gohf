@@ -115,8 +115,8 @@ export default function Join() {
       <section className="py-16 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">Get Involved</span>
-            <h2 className="mt-4 text-3xl font-semibold text-[#1C1C1E] tracking-tight">Ways to Contribute</h2>
+            <span className="text-sm font-medium text-[var(--md-sys-color-secondary)] tracking-wide uppercase">Get Involved</span>
+            <h2 className="mt-4 text-3xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">Ways to Contribute</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {waysToHelp.map((way) => (
@@ -133,33 +133,33 @@ export default function Join() {
       </section>
 
       {/* Form Section */}
-      <section className="py-24 px-6 bg-[#fafafa]">
+      <section className="py-24 px-6 bg-[var(--md-sys-color-surface)]">
         <div className="mx-auto max-w-2xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold text-[#1C1C1E] tracking-tight">Express Your Interest</h2>
-            <p className="mt-4 text-[#5f6368]">
+            <h2 className="text-3xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">Express Your Interest</h2>
+            <p className="mt-4 text-[var(--md-sys-color-on-surface-variant)]">
               Fill out the form and we&apos;ll get in touch about how you can contribute.
             </p>
           </div>
 
           {submitStatus === 'success' && (
-            <div className="mb-8 p-4 rounded-2xl bg-[#E8FAE8] border border-[#30D158] text-center">
-              <p className="text-[#1C1C1E] font-medium">Thank you for your interest!</p>
-              <p className="text-sm text-[#5f6368] mt-1">We&apos;ll be in touch soon.</p>
+            <div className="mb-8 p-4 rounded-2xl bg-[var(--md-sys-color-tertiary-container)] border border-[var(--md-sys-color-tertiary)] text-center">
+              <p className="text-[var(--md-sys-color-on-surface)] font-medium">Thank you for your interest!</p>
+              <p className="text-sm text-[var(--md-sys-color-on-surface-variant)] mt-1">We&apos;ll be in touch soon.</p>
             </div>
           )}
 
           {submitStatus === 'error' && (
-            <div className="mb-8 p-4 rounded-2xl bg-[#FCE4EC] border border-[#FF6B6B] text-center">
-              <p className="text-[#1C1C1E] font-medium">Something went wrong</p>
-              <p className="text-sm text-[#5f6368] mt-1">Please try again or email us directly.</p>
+            <div className="mb-8 p-4 rounded-2xl bg-[var(--md-sys-color-error-container)] border border-[var(--md-sys-color-accent)] text-center">
+              <p className="text-[var(--md-sys-color-on-surface)] font-medium">Something went wrong</p>
+              <p className="text-sm text-[var(--md-sys-color-on-surface-variant)] mt-1">Please try again or email us directly.</p>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-[#1C1C1E] mb-2">
+                <label htmlFor="firstName" className="block text-sm font-medium text-[var(--md-sys-color-on-surface)] mb-2">
                   First Name *
                 </label>
                 <input
@@ -168,12 +168,12 @@ export default function Join() {
                   required
                   value={formData.firstName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
+                  className="w-full px-4 py-3 rounded-2xl border border-[var(--md-sys-color-outline-variant)] bg-[var(--md-sys-color-surface-bright)] focus:border-[var(--md-sys-color-primary)] focus:ring-0 transition-colors duration-300"
                   placeholder="Your first name"
                 />
               </div>
               <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-[#1C1C1E] mb-2">
+                <label htmlFor="lastName" className="block text-sm font-medium text-[var(--md-sys-color-on-surface)] mb-2">
                   Last Name *
                 </label>
                 <input
@@ -182,7 +182,7 @@ export default function Join() {
                   required
                   value={formData.lastName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
+                  className="w-full px-4 py-3 rounded-2xl border border-[var(--md-sys-color-outline-variant)] bg-[var(--md-sys-color-surface-bright)] focus:border-[var(--md-sys-color-primary)] focus:ring-0 transition-colors duration-300"
                   placeholder="Your last name"
                 />
               </div>
@@ -190,7 +190,7 @@ export default function Join() {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-[#1C1C1E] mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-[var(--md-sys-color-on-surface)] mb-2">
                   Email *
                 </label>
                 <input
@@ -199,12 +199,12 @@ export default function Join() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
+                  className="w-full px-4 py-3 rounded-2xl border border-[var(--md-sys-color-outline-variant)] bg-[var(--md-sys-color-surface-bright)] focus:border-[var(--md-sys-color-primary)] focus:ring-0 transition-colors duration-300"
                   placeholder="your@email.com"
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-[#1C1C1E] mb-2">
+                <label htmlFor="phone" className="block text-sm font-medium text-[var(--md-sys-color-on-surface)] mb-2">
                   Phone
                 </label>
                 <input
@@ -212,14 +212,14 @@ export default function Join() {
                   id="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
+                  className="w-full px-4 py-3 rounded-2xl border border-[var(--md-sys-color-outline-variant)] bg-[var(--md-sys-color-surface-bright)] focus:border-[var(--md-sys-color-primary)] focus:ring-0 transition-colors duration-300"
                   placeholder="+91 XXXXX XXXXX"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="interest" className="block text-sm font-medium text-[#1C1C1E] mb-2">
+              <label htmlFor="interest" className="block text-sm font-medium text-[var(--md-sys-color-on-surface)] mb-2">
                 How would you like to help? *
               </label>
               <select
@@ -227,7 +227,7 @@ export default function Join() {
                 required
                 value={formData.interest}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300"
+                className="w-full px-4 py-3 rounded-2xl border border-[var(--md-sys-color-outline-variant)] bg-[var(--md-sys-color-surface-bright)] focus:border-[var(--md-sys-color-primary)] focus:ring-0 transition-colors duration-300"
               >
                 <option value="">Select an option</option>
                 <option value="volunteer">Volunteer</option>
@@ -238,7 +238,7 @@ export default function Join() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-[#1C1C1E] mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-[var(--md-sys-color-on-surface)] mb-2">
                 Tell us about yourself
               </label>
               <textarea
@@ -246,7 +246,7 @@ export default function Join() {
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-2xl border border-[#e8eaed] bg-white focus:border-[#0A84FF] focus:ring-0 transition-colors duration-300 resize-none"
+                className="w-full px-4 py-3 rounded-2xl border border-[var(--md-sys-color-outline-variant)] bg-[var(--md-sys-color-surface-bright)] focus:border-[var(--md-sys-color-primary)] focus:ring-0 transition-colors duration-300 resize-none"
                 placeholder="Your background and why you want to join..."
               />
             </div>
@@ -254,7 +254,7 @@ export default function Join() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 text-base font-medium text-white bg-[#0A84FF] rounded-full hover:bg-[#0066CC] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 text-base font-medium text-[var(--md-sys-color-on-primary)] bg-[var(--md-sys-color-primary)] rounded-full hover:bg-[var(--md-sys-color-primary-dark)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
@@ -265,15 +265,15 @@ export default function Join() {
       {/* Impact Stats */}
       <section className="py-24 px-6">
         <div className="mx-auto max-w-4xl">
-          <div className="p-12 rounded-3xl bg-gradient-to-br from-[#E3F2FF] to-[#f8f9fa]">
-            <h2 className="text-2xl font-semibold text-[#1C1C1E] tracking-tight text-center mb-10">
+          <div className="p-12 rounded-3xl bg-gradient-to-br from-[var(--md-sys-color-primary-container)] to-[var(--md-sys-color-surface-container-low)]">
+            <h2 className="text-2xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight text-center mb-10">
               Your Impact Matters
             </h2>
             <div className="grid grid-cols-3 gap-8">
               {stats.map((stat, index) => (
                 <div key={stat.label} className="text-center">
-                  <p className={`text-4xl md:text-5xl font-semibold ${index === 0 ? 'text-[#0A84FF]' : index === 1 ? 'text-[#FF9F0A]' : 'text-[#30D158]'}`}>{stat.value}</p>
-                  <p className="mt-2 text-sm text-[#5f6368]">{stat.label}</p>
+                  <p className={`text-4xl md:text-5xl font-semibold ${index === 0 ? 'text-[var(--md-sys-color-primary)]' : index === 1 ? 'text-[var(--md-sys-color-secondary)]' : 'text-[var(--md-sys-color-tertiary)]'}`}>{stat.value}</p>
+                  <p className="mt-2 text-sm text-[var(--md-sys-color-on-surface-variant)]">{stat.label}</p>
                 </div>
               ))}
             </div>

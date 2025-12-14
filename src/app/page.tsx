@@ -55,17 +55,17 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">Our Purpose</span>
-              <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-[#1C1C1E] tracking-tight leading-tight">
+              <span className="text-sm font-medium text-[var(--md-sys-color-secondary)] tracking-wide uppercase">Our Purpose</span>
+              <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight leading-tight">
                 Every child deserves a chance to thrive
               </h2>
-              <p className="mt-6 text-lg text-[#5f6368] leading-relaxed">
+              <p className="mt-6 text-lg text-[var(--md-sys-color-on-surface-variant)] leading-relaxed">
                 A united family of JNV alumni, bound by gratitude and purpose—dedicated to transforming lives through education, mentorship, and support for underprivileged children. We stand with families of our brave soldiers who served on the frontlines. Where education uplifts, sacrifice is honored, and no family ever stands alone.
               </p>
               <div className="mt-8 flex gap-4">
                 <Link
                   href="/about"
-                  className="inline-flex items-center text-[#0A84FF] font-medium hover:gap-3 transition-all duration-300"
+                  className="inline-flex items-center text-[var(--md-sys-color-primary)] font-medium hover:gap-3 transition-all duration-300"
                 >
                   <span>Our Story</span>
                   <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -75,28 +75,28 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-[#E3F2FF] to-[#f8f9fa] flex items-center justify-center">
+              <div className="aspect-square rounded-3xl bg-gradient-to-br from-[var(--md-sys-color-primary-container)] to-[var(--md-sys-color-surface-container-low)] flex items-center justify-center">
                 <div className="text-center p-8">
-                  <p className="text-6xl md:text-7xl font-semibold text-[#0A84FF]">100+</p>
-                  <p className="mt-2 text-lg text-[#5f6368]">Lives Impacted</p>
+                  <p className="text-6xl md:text-7xl font-semibold text-[var(--md-sys-color-primary)]">100+</p>
+                  <p className="mt-2 text-lg text-[var(--md-sys-color-on-surface-variant)]">Lives Impacted</p>
                 </div>
               </div>
               {/* Decorative element */}
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-[#FFF4E0] -z-10" />
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-[var(--md-sys-color-secondary-container)] -z-10" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Initiatives Section */}
-      <section className="py-24 px-6 bg-[#fafafa]">
+      <section className="py-24 px-6 bg-[var(--md-sys-color-surface)]">
         <div className="mx-auto max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">What We Do</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-[#1C1C1E] tracking-tight">
+            <span className="text-sm font-medium text-[var(--md-sys-color-secondary)] tracking-wide uppercase">What We Do</span>
+            <h2 className="mt-4 text-4xl md:text-5xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">
               Our Initiatives
             </h2>
-            <p className="mt-6 text-lg text-[#5f6368]">
+            <p className="mt-6 text-lg text-[var(--md-sys-color-on-surface-variant)]">
               Comprehensive programs designed to nurture potential and create lasting change.
             </p>
           </div>
@@ -117,28 +117,28 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-24 px-6">
         <div className="mx-auto max-w-4xl">
-          <div className="relative overflow-hidden rounded-[2.5rem] bg-[#0A84FF] p-12 md:p-16 text-center">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-[var(--md-sys-color-primary)] p-12 md:p-16 text-center">
             {/* Decorative gradients */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#0066CC] to-transparent rounded-full blur-3xl opacity-50" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-[#FF9F0A]/20 to-transparent rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[var(--md-sys-color-primary-dark)] to-transparent rounded-full blur-3xl opacity-50" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-[var(--md-sys-color-secondary)]/20 to-transparent rounded-full blur-3xl" />
 
             <div className="relative">
-              <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight">
+              <h2 className="text-3xl md:text-5xl font-semibold text-[var(--md-sys-color-on-primary)] tracking-tight">
                 Be Part of the Change
               </h2>
-              <p className="mt-6 text-lg text-white/70 max-w-xl mx-auto">
+              <p className="mt-6 text-lg text-[var(--md-sys-color-on-primary)]/70 max-w-xl mx-auto">
                 Your involvement can transform a child&apos;s future. Join our community of changemakers today.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
                   href="/join"
-                  className="px-8 py-4 text-base font-medium text-[#0A84FF] bg-white rounded-full hover:bg-[#f8f9fa] hover:shadow-xl transition-all duration-300"
+                  className="px-8 py-4 text-base font-medium text-[var(--md-sys-color-primary)] bg-[var(--md-sys-color-surface-bright)] rounded-full hover:bg-[var(--md-sys-color-surface-container-low)] hover:shadow-xl transition-all duration-300"
                 >
                   Get Involved
                 </Link>
                 <Link
                   href="/contact"
-                  className="px-8 py-4 text-base font-medium text-white border border-white/30 rounded-full hover:bg-white/10 transition-all duration-300"
+                  className="px-8 py-4 text-base font-medium text-[var(--md-sys-color-on-primary)] border border-[var(--md-sys-color-on-primary)]/30 rounded-full hover:bg-[var(--md-sys-color-on-primary)]/10 transition-all duration-300"
                 >
                   Contact Us
                 </Link>

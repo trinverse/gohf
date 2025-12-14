@@ -44,10 +44,10 @@ export default function About() {
         <div className="mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#1C1C1E] tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">
                 Born from shared experiences, driven by purpose
               </h2>
-              <div className="mt-8 space-y-6 text-lg text-[#5f6368] leading-relaxed">
+              <div className="mt-8 space-y-6 text-lg text-[var(--md-sys-color-on-surface-variant)] leading-relaxed">
                 <p>
                   Guardians of Hope Foundation emerged from a simple yet powerful idea: those who have
                   been given opportunities have a responsibility to create them for others.
@@ -66,10 +66,10 @@ export default function About() {
             </div>
             <div className="relative">
               <div className="sticky top-32">
-                <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-[#E3F2FF] via-[#f8f9fa] to-[#FFF4E0] p-8 flex items-center justify-center">
+                <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-[var(--md-sys-color-primary-container)] via-[var(--md-sys-color-surface-container-low)] to-[var(--md-sys-color-secondary-container)] p-8 flex items-center justify-center">
                   <div className="text-center">
-                    <p className="text-sm font-medium text-[#5f6368] uppercase tracking-wide">Established</p>
-                    <p className="mt-2 text-6xl font-semibold text-[#0A84FF]">2025</p>
+                    <p className="text-sm font-medium text-[var(--md-sys-color-on-surface-variant)] uppercase tracking-wide">Established</p>
+                    <p className="mt-2 text-6xl font-semibold text-[var(--md-sys-color-primary)]">2025</p>
                   </div>
                 </div>
               </div>
@@ -79,31 +79,31 @@ export default function About() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="py-24 px-6 bg-[#fafafa]">
+      <section className="py-24 px-6 bg-[var(--md-sys-color-surface)]">
         <div className="mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-10 rounded-3xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-              <div className="w-12 h-12 rounded-2xl bg-[#E3F2FF] flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-[#0A84FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="p-10 rounded-3xl bg-[var(--md-sys-color-surface-bright)] shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+              <div className="w-12 h-12 rounded-2xl bg-[var(--md-sys-color-primary-container)] flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-[var(--md-sys-color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-semibold text-[#1C1C1E] tracking-tight">Our Vision</h3>
-              <p className="mt-4 text-[#5f6368] leading-relaxed">
+              <h3 className="text-2xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">Our Vision</h3>
+              <p className="mt-4 text-[var(--md-sys-color-on-surface-variant)] leading-relaxed">
                 A world where every deserving child has access to quality education and
                 opportunities for growth, regardless of their socio-economic background.
                 We envision empowered individuals who pay forward the support they received.
               </p>
             </div>
-            <div className="p-10 rounded-3xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-              <div className="w-12 h-12 rounded-2xl bg-[#FFF4E0] flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-[#FF9F0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="p-10 rounded-3xl bg-[var(--md-sys-color-surface-bright)] shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+              <div className="w-12 h-12 rounded-2xl bg-[var(--md-sys-color-secondary-container)] flex items-center justify-center mb-6">
+                <svg className="w-6 h-6 text-[var(--md-sys-color-secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-semibold text-[#1C1C1E] tracking-tight">Our Mission</h3>
-              <p className="mt-4 text-[#5f6368] leading-relaxed">
+              <h3 className="text-2xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">Our Mission</h3>
+              <p className="mt-4 text-[var(--md-sys-color-on-surface-variant)] leading-relaxed">
                 A united family of JNV alumni, bound by gratitude and purpose—dedicated to transforming lives through education, mentorship, and lifelong support for underprivileged children. We stand shoulder to shoulder with the families left behind by our brave brothers and sisters of JNV Bijnor who served on the frontlines, protecting our borders, we commit to being their strength, their hope, and their extended family. Where education uplifts, sacrifice is honored, and no family ever stands alone.
               </p>
             </div>
@@ -115,17 +115,17 @@ export default function About() {
       <section className="py-24 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">What Guides Us</span>
-            <h2 className="mt-4 text-4xl font-semibold text-[#1C1C1E] tracking-tight">Our Values</h2>
+            <span className="text-sm font-medium text-[var(--md-sys-color-secondary)] tracking-wide uppercase">What Guides Us</span>
+            <h2 className="mt-4 text-4xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">Our Values</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value) => (
               <div key={value.title} className="text-center">
-                <div className="w-16 h-16 rounded-3xl bg-[#E3F2FF] flex items-center justify-center mx-auto mb-6">
-                  <div className="text-[#0A84FF]">{value.icon}</div>
+                <div className="w-16 h-16 rounded-3xl bg-[var(--md-sys-color-primary-container)] flex items-center justify-center mx-auto mb-6">
+                  <div className="text-[var(--md-sys-color-primary)]">{value.icon}</div>
                 </div>
-                <h3 className="text-xl font-semibold text-[#1C1C1E]">{value.title}</h3>
-                <p className="mt-3 text-[#5f6368]">{value.description}</p>
+                <h3 className="text-xl font-semibold text-[var(--md-sys-color-on-surface)]">{value.title}</h3>
+                <p className="mt-3 text-[var(--md-sys-color-on-surface-variant)]">{value.description}</p>
               </div>
             ))}
           </div>
@@ -135,9 +135,9 @@ export default function About() {
       {/* Disclaimer */}
       <section className="py-16 px-6">
         <div className="mx-auto max-w-3xl">
-          <div className="p-8 rounded-3xl bg-[#f8f9fa] border border-[#e8eaed] text-center">
-            <p className="text-[#5f6368]">
-              <span className="font-medium text-[#1C1C1E]">Please note:</span> Guardians of Hope Foundation
+          <div className="p-8 rounded-3xl bg-[var(--md-sys-color-surface-container-low)] border border-[var(--md-sys-color-outline-variant)] text-center">
+            <p className="text-[var(--md-sys-color-on-surface-variant)]">
+              <span className="font-medium text-[var(--md-sys-color-on-surface)]">Please note:</span> Guardians of Hope Foundation
               is an independent non-profit organization founded by JNV alumni. We are not affiliated with the official
               Jawahar Navodaya Vidyalaya administration or Navodaya Vidyalaya Samiti.
             </p>

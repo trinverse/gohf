@@ -262,26 +262,26 @@ export default function Admin() {
   // Show loading while checking auth
   if (authLoading || !user || role !== 'admin') {
     return (
-      <div className="min-h-screen bg-white pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-[var(--md-sys-color-surface-bright)] pt-20 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-10 h-10 border-2 border-[#0A84FF] border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="mt-4 text-[#86868b]">Checking access...</p>
+          <div className="w-10 h-10 border-2 border-[var(--md-sys-color-primary)] border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="mt-4 text-[var(--md-sys-color-on-surface-muted)]">Checking access...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-[var(--md-sys-color-surface-bright)] pt-20">
       {/* Header */}
-      <div className="border-b border-[#f0f0f0]">
+      <div className="border-b border-[var(--md-sys-color-outline-variant)]">
         <div className="py-12 px-6">
           <div className="mx-auto max-w-6xl">
-            <span className="text-sm font-medium text-[#FF9F0A] tracking-wide uppercase">Dashboard</span>
-            <h1 className="mt-2 text-4xl md:text-5xl font-semibold text-[#1C1C1E] tracking-tight">
+            <span className="text-sm font-medium text-[var(--md-sys-color-secondary)] tracking-wide uppercase">Dashboard</span>
+            <h1 className="mt-2 text-4xl md:text-5xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">
               Admin
             </h1>
-            <p className="mt-3 text-lg text-[#86868b]">
+            <p className="mt-3 text-lg text-[var(--md-sys-color-on-surface-muted)]">
               Overview of foundation activities and data
             </p>
           </div>
@@ -289,27 +289,27 @@ export default function Admin() {
       </div>
 
       {/* Stats Overview */}
-      <div className="border-b border-[#f0f0f0] bg-[#fafafa]">
+      <div className="border-b border-[var(--md-sys-color-outline-variant)] bg-[var(--md-sys-color-surface)]">
         <div className="py-8 px-6">
           <div className="mx-auto max-w-6xl">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="group">
-                <p className="text-sm font-medium text-[#86868b] tracking-wide">Members</p>
-                <p className="mt-1 text-3xl font-semibold text-[#1C1C1E] tracking-tight">{members.length}</p>
+                <p className="text-sm font-medium text-[var(--md-sys-color-on-surface-muted)] tracking-wide">Members</p>
+                <p className="mt-1 text-3xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">{members.length}</p>
               </div>
               <div className="group">
-                <p className="text-sm font-medium text-[#86868b] tracking-wide">Donations</p>
-                <p className="mt-1 text-3xl font-semibold text-[#1C1C1E] tracking-tight">
+                <p className="text-sm font-medium text-[var(--md-sys-color-on-surface-muted)] tracking-wide">Donations</p>
+                <p className="mt-1 text-3xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">
                   {totalDonations > 0 ? `₹${totalDonations.toLocaleString('en-IN')}` : '₹0'}
                 </p>
               </div>
               <div className="group">
-                <p className="text-sm font-medium text-[#86868b] tracking-wide">Registrations</p>
-                <p className="mt-1 text-3xl font-semibold text-[#1C1C1E] tracking-tight">{events.length}</p>
+                <p className="text-sm font-medium text-[var(--md-sys-color-on-surface-muted)] tracking-wide">Registrations</p>
+                <p className="mt-1 text-3xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">{events.length}</p>
               </div>
               <div className="group">
-                <p className="text-sm font-medium text-[#86868b] tracking-wide">Messages</p>
-                <p className="mt-1 text-3xl font-semibold text-[#1C1C1E] tracking-tight">{messages.length}</p>
+                <p className="text-sm font-medium text-[var(--md-sys-color-on-surface-muted)] tracking-wide">Messages</p>
+                <p className="mt-1 text-3xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">{messages.length}</p>
               </div>
             </div>
           </div>
@@ -320,24 +320,24 @@ export default function Admin() {
       <div className="py-12 px-6">
         <div className="mx-auto max-w-6xl">
           {/* Navigation Tabs */}
-          <div className="flex gap-1 p-1.5 bg-[#f5f5f7] rounded-2xl w-fit mb-10">
+          <div className="flex gap-1 p-1.5 bg-[var(--md-sys-color-surface-dim)] rounded-2xl w-fit mb-10">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   activeTab === tab.id
-                    ? 'bg-white text-[#1C1C1E] shadow-sm'
-                    : 'text-[#86868b] hover:text-[#1C1C1E]'
+                    ? 'bg-[var(--md-sys-color-surface-bright)] text-[var(--md-sys-color-on-surface)] shadow-sm'
+                    : 'text-[var(--md-sys-color-on-surface-muted)] hover:text-[var(--md-sys-color-on-surface)]'
                 }`}
               >
-                <span className={activeTab === tab.id ? 'text-[#0A84FF]' : ''}>{tab.icon}</span>
+                <span className={activeTab === tab.id ? 'text-[var(--md-sys-color-primary)]' : ''}>{tab.icon}</span>
                 <span>{tab.label}</span>
                 {tab.count > 0 && (
                   <span className={`px-2 py-0.5 rounded-md text-xs font-medium ${
                     activeTab === tab.id
-                      ? 'bg-[#0A84FF] text-white'
-                      : 'bg-[#e8e8ed] text-[#86868b]'
+                      ? 'bg-[var(--md-sys-color-primary)] text-[var(--md-sys-color-on-primary)]'
+                      : 'bg-[var(--md-sys-color-outline-variant)] text-[var(--md-sys-color-on-surface-muted)]'
                   }`}>
                     {tab.count}
                   </span>
@@ -349,20 +349,20 @@ export default function Admin() {
           {/* Content Area */}
           {loading ? (
             <div className="flex flex-col items-center justify-center py-24">
-              <div className="w-10 h-10 border-2 border-[#0A84FF] border-t-transparent rounded-full animate-spin" />
-              <p className="mt-6 text-[#86868b]">Loading data...</p>
+              <div className="w-10 h-10 border-2 border-[var(--md-sys-color-primary)] border-t-transparent rounded-full animate-spin" />
+              <p className="mt-6 text-[var(--md-sys-color-on-surface-muted)]">Loading data...</p>
             </div>
           ) : error ? (
             <div className="flex flex-col items-center justify-center py-24">
-              <div className="w-16 h-16 rounded-full bg-[#FFF4E0] flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-[#FF9F0A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="w-16 h-16 rounded-full bg-[var(--md-sys-color-secondary-container)] flex items-center justify-center mb-6">
+                <svg className="w-8 h-8 text-[var(--md-sys-color-secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                 </svg>
               </div>
-              <p className="text-[#1C1C1E] font-medium">{error}</p>
+              <p className="text-[var(--md-sys-color-on-surface)] font-medium">{error}</p>
               <button
                 onClick={fetchData}
-                className="mt-6 px-6 py-3 bg-[#0A84FF] text-white rounded-full text-sm font-medium hover:bg-[#0066CC] transition-all duration-300"
+                className="mt-6 px-6 py-3 bg-[var(--md-sys-color-primary)] text-[var(--md-sys-color-on-primary)] rounded-full text-sm font-medium hover:bg-[var(--md-sys-color-primary-dark)] transition-all duration-300"
               >
                 Try Again
               </button>
@@ -662,33 +662,33 @@ export default function Admin() {
 function EmptyState({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
   return (
     <div className="flex flex-col items-center justify-center py-24">
-      <div className="text-[#d1d1d6] mb-6">
+      <div className="text-[var(--md-sys-color-outline)] mb-6">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold text-[#1C1C1E] tracking-tight">{title}</h3>
-      <p className="mt-2 text-[#86868b] text-center max-w-sm">{description}</p>
+      <h3 className="text-xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">{title}</h3>
+      <p className="mt-2 text-[var(--md-sys-color-on-surface-muted)] text-center max-w-sm">{description}</p>
     </div>
   )
 }
 
 function StatusBadge({ status }: { status: string }) {
   const styles: Record<string, string> = {
-    approved: 'bg-[#E8FAE8] text-[#30D158]',
-    completed: 'bg-[#E8FAE8] text-[#30D158]',
-    registered: 'bg-[#E8FAE8] text-[#30D158]',
-    replied: 'bg-[#E8FAE8] text-[#30D158]',
-    pending: 'bg-[#FFF4E0] text-[#FF9F0A]',
-    unread: 'bg-[#E3F2FF] text-[#0A84FF]',
-    read: 'bg-[#f0f0f0] text-[#86868b]',
-    cancelled: 'bg-[#FCE4EC] text-[#FF6B6B]',
-    failed: 'bg-[#FCE4EC] text-[#FF6B6B]',
-    rejected: 'bg-[#FCE4EC] text-[#FF6B6B]',
-    admin: 'bg-[#FFF4E0] text-[#FF9F0A]',
-    member: 'bg-[#E3F2FF] text-[#0A84FF]',
+    approved: 'bg-[var(--md-sys-color-tertiary-container)] text-[var(--md-sys-color-tertiary)]',
+    completed: 'bg-[var(--md-sys-color-tertiary-container)] text-[var(--md-sys-color-tertiary)]',
+    registered: 'bg-[var(--md-sys-color-tertiary-container)] text-[var(--md-sys-color-tertiary)]',
+    replied: 'bg-[var(--md-sys-color-tertiary-container)] text-[var(--md-sys-color-tertiary)]',
+    pending: 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]',
+    unread: 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]',
+    read: 'bg-[var(--md-sys-color-outline-variant)] text-[var(--md-sys-color-on-surface-muted)]',
+    cancelled: 'bg-[var(--md-sys-color-error-container)] text-[var(--md-sys-color-accent)]',
+    failed: 'bg-[var(--md-sys-color-error-container)] text-[var(--md-sys-color-accent)]',
+    rejected: 'bg-[var(--md-sys-color-error-container)] text-[var(--md-sys-color-accent)]',
+    admin: 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]',
+    member: 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]',
   }
 
   return (
-    <span className={`inline-flex px-2.5 py-1 text-xs font-medium rounded-lg capitalize ${styles[status] || 'bg-[#f0f0f0] text-[#86868b]'}`}>
+    <span className={`inline-flex px-2.5 py-1 text-xs font-medium rounded-lg capitalize ${styles[status] || 'bg-[var(--md-sys-color-outline-variant)] text-[var(--md-sys-color-on-surface-muted)]'}`}>
       {status}
     </span>
   )

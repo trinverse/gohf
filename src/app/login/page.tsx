@@ -72,17 +72,17 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-white pt-20 flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[var(--md-sys-color-surface-bright)] pt-20 flex items-center justify-center px-6">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="w-16 h-16 rounded-3xl bg-[#0A84FF] flex items-center justify-center mx-auto mb-6">
-            <span className="text-white font-semibold text-xl">GHF</span>
+          <div className="w-16 h-16 rounded-3xl bg-[var(--md-sys-color-primary)] flex items-center justify-center mx-auto mb-6">
+            <span className="text-[var(--md-sys-color-on-primary)] font-semibold text-xl">GHF</span>
           </div>
-          <h1 className="text-3xl font-semibold text-[#1C1C1E] tracking-tight">
+          <h1 className="text-3xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">
             {isSignUp ? 'Create account' : 'Welcome back'}
           </h1>
-          <p className="mt-3 text-[#86868b]">
+          <p className="mt-3 text-[var(--md-sys-color-on-surface-muted)]">
             {isSignUp ? 'Join the Guardians of Hope community' : 'Sign in to access your account'}
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function Login() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-[#1C1C1E] mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-[var(--md-sys-color-on-surface)] mb-2">
               Email
             </label>
             <input
@@ -101,14 +101,14 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
-              className="w-full px-4 py-4 rounded-2xl bg-[#f5f5f7] border-0 text-[#1C1C1E] placeholder-[#86868b] focus:outline-none focus:ring-2 focus:ring-[#0A84FF] transition-all duration-300"
+              className="w-full px-4 py-4 rounded-2xl bg-[var(--md-sys-color-surface-dim)] border-0 text-[var(--md-sys-color-on-surface)] placeholder-[var(--md-sys-color-on-surface-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--md-sys-color-primary)] transition-all duration-300"
               placeholder="you@example.com"
             />
           </div>
 
           {/* Password */}
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-[#1C1C1E] mb-2">
+            <label htmlFor="password" className="block text-sm font-medium text-[var(--md-sys-color-on-surface)] mb-2">
               Password
             </label>
             <input
@@ -118,7 +118,7 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
               autoComplete={isSignUp ? 'new-password' : 'current-password'}
-              className="w-full px-4 py-4 rounded-2xl bg-[#f5f5f7] border-0 text-[#1C1C1E] placeholder-[#86868b] focus:outline-none focus:ring-2 focus:ring-[#0A84FF] transition-all duration-300"
+              className="w-full px-4 py-4 rounded-2xl bg-[var(--md-sys-color-surface-dim)] border-0 text-[var(--md-sys-color-on-surface)] placeholder-[var(--md-sys-color-on-surface-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--md-sys-color-primary)] transition-all duration-300"
               placeholder={isSignUp ? 'Create a password (min 6 characters)' : 'Enter your password'}
             />
           </div>
@@ -126,7 +126,7 @@ export default function Login() {
           {/* Confirm Password - Only for Sign Up */}
           {isSignUp && (
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#1C1C1E] mb-2">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-[var(--md-sys-color-on-surface)] mb-2">
                 Confirm Password
               </label>
               <input
@@ -136,7 +136,7 @@ export default function Login() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
                 autoComplete="new-password"
-                className="w-full px-4 py-4 rounded-2xl bg-[#f5f5f7] border-0 text-[#1C1C1E] placeholder-[#86868b] focus:outline-none focus:ring-2 focus:ring-[#0A84FF] transition-all duration-300"
+                className="w-full px-4 py-4 rounded-2xl bg-[var(--md-sys-color-surface-dim)] border-0 text-[var(--md-sys-color-on-surface)] placeholder-[var(--md-sys-color-on-surface-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--md-sys-color-primary)] transition-all duration-300"
                 placeholder="Confirm your password"
               />
             </div>
@@ -144,14 +144,14 @@ export default function Login() {
 
           {/* Error Message */}
           {error && (
-            <div className="p-4 rounded-2xl bg-[#FCE4EC] text-[#FF6B6B] text-sm">
+            <div className="p-4 rounded-2xl bg-[var(--md-sys-color-error-container)] text-[var(--md-sys-color-accent)] text-sm">
               {error}
             </div>
           )}
 
           {/* Success Message */}
           {success && (
-            <div className="p-4 rounded-2xl bg-[#E8FAE8] text-[#30D158] text-sm">
+            <div className="p-4 rounded-2xl bg-[var(--md-sys-color-tertiary-container)] text-[var(--md-sys-color-tertiary)] text-sm">
               {success}
             </div>
           )}
@@ -160,7 +160,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 px-6 rounded-2xl bg-[#0A84FF] text-white font-medium text-base hover:bg-[#0066CC] focus:outline-none focus:ring-2 focus:ring-[#0A84FF] focus:ring-offset-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-4 px-6 rounded-2xl bg-[var(--md-sys-color-primary)] text-[var(--md-sys-color-on-primary)] font-medium text-base hover:bg-[var(--md-sys-color-primary-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--md-sys-color-primary)] focus:ring-offset-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <span className="flex items-center justify-center gap-2">
@@ -178,12 +178,12 @@ export default function Login() {
 
         {/* Toggle Sign In / Sign Up */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-[#86868b]">
+          <p className="text-sm text-[var(--md-sys-color-on-surface-muted)]">
             {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
             <button
               type="button"
               onClick={toggleMode}
-              className="text-[#0A84FF] font-medium hover:underline"
+              className="text-[var(--md-sys-color-primary)] font-medium hover:underline"
             >
               {isSignUp ? 'Sign in' : 'Create one'}
             </button>
@@ -194,7 +194,7 @@ export default function Login() {
         <div className="mt-4 text-center">
           <Link
             href="/"
-            className="text-sm text-[#86868b] hover:text-[#0A84FF] transition-colors duration-300"
+            className="text-sm text-[var(--md-sys-color-on-surface-muted)] hover:text-[var(--md-sys-color-primary)] transition-colors duration-300"
           >
             Back to home
           </Link>
