@@ -26,6 +26,7 @@ export default function Members() {
   const [approvedMembers, setApprovedMembers] = useState<ApprovedMember[]>([])
   const [users, setUsers] = useState<AppUser[]>([])
   const [loading, setLoading] = useState(true)
+  const [expandedMember, setExpandedMember] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -117,42 +118,69 @@ export default function Members() {
               </p>
             </div>
           ) : (
-            <div className="grid gap-4 sm:grid-cols-2">
-              {approvedMembers.map((member) => (
-                <div
-                  key={member.id}
-                  className="group p-6 rounded-2xl bg-[var(--md-sys-color-surface-bright)] shadow-[var(--md-sys-elevation-1)] hover:shadow-[var(--md-sys-elevation-3)] transition-all duration-300"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${getInterestColor(member.interest || '')} flex items-center justify-center transition-transform duration-500 group-hover:scale-105`}>
-                      <span className="text-lg font-semibold text-[var(--md-sys-color-on-surface)]">
-                        {member.first_name?.charAt(0)}{member.last_name?.charAt(0)}
-                      </span>
-                    </div>
-                    <div className="min-w-0">
-                      <h3 className="text-lg font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">
-                        {member.first_name} {member.last_name}
-                      </h3>
-                      <p className="text-sm font-medium text-[var(--md-sys-color-primary)]">
-                        {getInterestLabel(member.interest || '')}
-                      </p>
-                    </div>
+            <div className="rounded-2xl bg-[var(--md-sys-color-surface-bright)] shadow-[var(--md-sys-elevation-1)] overflow-hidden divide-y divide-[var(--md-sys-color-surface-container)]">
+              {approvedMembers.map((member) => {
+                const isExpanded = expandedMember === member.id
+                return (
+                  <div key={member.id} className="transition-colors duration-200 hover:bg-[var(--md-sys-color-surface-container-low)]">
+                    <button
+                      onClick={() => setExpandedMember(isExpanded ? null : member.id)}
+                      className="w-full px-4 py-3 flex items-center gap-3 text-left"
+                    >
+                      {/* Avatar */}
+                      <div className={`flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br ${getInterestColor(member.interest || '')} flex items-center justify-center`}>
+                        <span className="text-sm font-semibold text-[var(--md-sys-color-on-surface)]">
+                          {member.first_name?.charAt(0)}{member.last_name?.charAt(0)}
+                        </span>
+                      </div>
+
+                      {/* Name & Info */}
+                      <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                        <h3 className="font-medium text-[var(--md-sys-color-on-surface)] truncate">
+                          {member.first_name} {member.last_name}
+                        </h3>
+                        <div className="flex items-center gap-2 text-xs">
+                          <span className={`px-2 py-0.5 rounded-md font-medium ${
+                            member.interest === 'mentor' ? 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]' :
+                            member.interest === 'volunteer' ? 'bg-[var(--md-sys-color-tertiary-container)] text-[var(--md-sys-color-tertiary)]' :
+                            member.interest === 'donate' ? 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]' :
+                            'bg-[var(--md-sys-color-surface-dim)] text-[var(--md-sys-color-on-surface-variant)]'
+                          }`}>
+                            {getInterestLabel(member.interest || '')}
+                          </span>
+                          <span className="text-[var(--md-sys-color-on-surface-muted)] hidden sm:inline">
+                            {new Date(member.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Expand indicator */}
+                      {member.message && (
+                        <svg
+                          className={`w-5 h-5 text-[var(--md-sys-color-on-surface-muted)] transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      )}
+                    </button>
+
+                    {/* Expandable content */}
+                    {isExpanded && member.message && (
+                      <div className="px-4 pb-4 pt-1 ml-13">
+                        <div className="pl-13 ml-10 p-3 rounded-xl bg-[var(--md-sys-color-surface-container-low)] text-sm text-[var(--md-sys-color-on-surface-variant)] leading-relaxed">
+                          &ldquo;{member.message}&rdquo;
+                        </div>
+                        <p className="mt-2 ml-10 text-xs text-[var(--md-sys-color-on-surface-muted)] sm:hidden">
+                          Joined {new Date(member.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
+                        </p>
+                      </div>
+                    )}
                   </div>
-                  {member.message && (
-                    <p className="mt-4 text-sm text-[var(--md-sys-color-on-surface-variant)] leading-relaxed line-clamp-2">
-                      &ldquo;{member.message}&rdquo;
-                    </p>
-                  )}
-                  <div className="mt-4 pt-4 border-t border-[var(--md-sys-color-surface-container)] flex items-center gap-2 text-xs text-[var(--md-sys-color-on-surface-muted)]">
-                    <svg className="w-4 h-4 text-[var(--md-sys-color-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span>
-                      Joined {new Date(member.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
-                    </span>
-                  </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           )}
         </div>
@@ -177,44 +205,39 @@ export default function Members() {
               </p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-2xl bg-[var(--md-sys-color-surface-bright)] shadow-[var(--md-sys-elevation-1)] overflow-hidden divide-y divide-[var(--md-sys-color-surface-container)]">
               {users.map((user) => (
                 <div
                   key={user.id}
-                  className="group p-5 rounded-2xl bg-[var(--md-sys-color-surface-bright)] shadow-[var(--md-sys-elevation-1)] hover:shadow-[var(--md-sys-elevation-3)] transition-all duration-300"
+                  className="px-4 py-3 flex items-center gap-3 transition-colors duration-200 hover:bg-[var(--md-sys-color-surface-container-low)]"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:scale-105 ${
-                      user.role === 'admin'
-                        ? 'bg-gradient-to-br from-[var(--md-sys-color-secondary-container)] to-[var(--md-sys-color-secondary-container)]'
-                        : 'bg-gradient-to-br from-[var(--md-sys-color-primary-container)] to-[var(--md-sys-color-primary-container)]'
+                  <div className={`flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center ${
+                    user.role === 'admin'
+                      ? 'bg-[var(--md-sys-color-secondary-container)]'
+                      : 'bg-[var(--md-sys-color-primary-container)]'
+                  }`}>
+                    <span className={`text-sm font-semibold ${
+                      user.role === 'admin' ? 'text-[var(--md-sys-color-secondary)]' : 'text-[var(--md-sys-color-primary)]'
                     }`}>
-                      <span className={`text-base font-semibold ${
-                        user.role === 'admin' ? 'text-[var(--md-sys-color-secondary)]' : 'text-[var(--md-sys-color-primary)]'
-                      }`}>
-                        {user.email?.charAt(0).toUpperCase()}
-                      </span>
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm font-medium text-[var(--md-sys-color-on-surface)] truncate">
-                        {user.email}
-                      </p>
-                      <span className={`inline-flex px-2 py-0.5 text-xs font-medium rounded-md capitalize ${
+                      {user.email?.charAt(0).toUpperCase()}
+                    </span>
+                  </div>
+                  <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                    <p className="text-sm font-medium text-[var(--md-sys-color-on-surface)] truncate">
+                      {user.email}
+                    </p>
+                    <div className="flex items-center gap-2 text-xs">
+                      <span className={`px-2 py-0.5 rounded-md font-medium capitalize ${
                         user.role === 'admin'
                           ? 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]'
                           : 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]'
                       }`}>
                         {user.role}
                       </span>
+                      <span className="text-[var(--md-sys-color-on-surface-muted)] hidden sm:inline">
+                        {new Date(user.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
+                      </span>
                     </div>
-                  </div>
-                  <div className="mt-3 pt-3 border-t border-[var(--md-sys-color-surface-container)] flex items-center gap-2 text-xs text-[var(--md-sys-color-on-surface-muted)]">
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span>
-                      {new Date(user.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
-                    </span>
                   </div>
                 </div>
               ))}
