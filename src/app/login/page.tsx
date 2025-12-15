@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useAuth } from '@/lib/auth-context'
+import Logo from '@/components/Logo'
 
 export default function Login() {
   const [isSignUp, setIsSignUp] = useState(false)
@@ -76,8 +77,8 @@ export default function Login() {
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="w-16 h-16 rounded-3xl bg-[var(--md-sys-color-primary)] flex items-center justify-center mx-auto mb-6">
-            <span className="text-[var(--md-sys-color-on-primary)] font-semibold text-xl">GHF</span>
+          <div className="flex justify-center mb-6">
+            <Logo size="lg" />
           </div>
           <h1 className="text-3xl font-semibold text-[var(--md-sys-color-on-surface)] tracking-tight">
             {isSignUp ? 'Create account' : 'Welcome back'}
