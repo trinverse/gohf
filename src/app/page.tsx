@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Hero from '@/components/Hero'
 import Card from '@/components/Card'
+import StatsCounter from '@/components/StatsCounter'
 
 const initiatives = [
   {
@@ -75,11 +76,8 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-[var(--md-sys-color-primary-container)] to-[var(--md-sys-color-surface-container-low)] flex items-center justify-center">
-                <div className="text-center p-8">
-                  <p className="text-6xl md:text-7xl font-semibold text-[var(--md-sys-color-primary)]">100+</p>
-                  <p className="mt-2 text-lg text-[var(--md-sys-color-on-surface-variant)]">Lives Impacted</p>
-                </div>
+              <div className="rounded-3xl bg-gradient-to-br from-[var(--md-sys-color-primary-container)] to-[var(--md-sys-color-surface-container-low)] p-8 md:p-10">
+                <StatsCounter />
               </div>
               {/* Decorative element */}
               <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-[var(--md-sys-color-secondary-container)] -z-10" />
