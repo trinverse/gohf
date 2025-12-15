@@ -139,25 +139,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut({ scope: 'global' })
-      if (error) {
-        console.error('Error signing out:', error)
-      }
-    } catch (err) {
-      console.error('Error during sign out:', err)
-    } finally {
-      // Clear state regardless of API response
+      // CRITICAL: Clear state FIRST to prevent race conditions
       setUser(null)
       setSession(null)
       setRole(null)
 
-      // Force clear all Supabase localStorage keys
+      // Clear ALL storage synchronously BEFORE calling Supabase signOut
       if (typeof window !== 'undefined') {
+        // Clear localStorage
         Object.keys(localStorage).forEach(key => {
-          if (key.startsWith('sb-') || key.includes('supabase')) {
+          if (key.startsWith('sb-') || key.includes('supabase') || key.includes('auth')) {
             localStorage.removeItem(key)
           }
         })
+
+        // Clear sessionStorage
+        Object.keys(sessionStorage).forEach(key => {
+          if (key.startsWith('sb-') || key.includes('supabase') || key.includes('auth')) {
+            sessionStorage.removeItem(key)
+          }
+        })
+      }
+
+      // Now call Supabase signOut with scope: 'global'
+      await supabase.auth.signOut({ scope: 'global' })
+
+    } catch (err) {
+      console.error('Error during sign out:', err)
+      // Even on error, ensure storage is cleared
+      if (typeof window !== 'undefined') {
+        localStorage.clear()
+        sessionStorage.clear()
       }
     }
   }

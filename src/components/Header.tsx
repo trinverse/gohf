@@ -34,15 +34,24 @@ export default function Header() {
 
   const handleSignOut = async () => {
     console.log('Logout clicked')
+    setMobileMenuOpen(false)
+
     try {
+      // Call signOut and wait for it to complete
       await signOut()
-      console.log('SignOut completed')
-      setMobileMenuOpen(false)
-      window.location.href = '/'
+      console.log('SignOut completed, redirecting...')
+
+      // Add a small delay to ensure storage is cleared before redirect
+      await new Promise(resolve => setTimeout(resolve, 100))
+
+      // Use replace to prevent back button issues
+      window.location.replace('/')
     } catch (error) {
       console.error('Logout error:', error)
-      // Force redirect even on error
-      window.location.href = '/'
+      // Force redirect even on error, but ensure storage is cleared
+      localStorage.clear()
+      sessionStorage.clear()
+      window.location.replace('/')
     }
   }
 
