@@ -134,24 +134,24 @@ export default function Members() {
                         </span>
                       </div>
 
-                      {/* Name & Info */}
-                      <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-                        <h3 className="font-medium text-[var(--md-sys-color-on-surface)] truncate">
-                          {member.first_name} {member.last_name}
-                        </h3>
-                        <div className="flex items-center gap-2 text-xs">
-                          <span className={`px-2 py-0.5 rounded-md font-medium ${
-                            member.interest === 'mentor' ? 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]' :
-                            member.interest === 'volunteer' ? 'bg-[var(--md-sys-color-tertiary-container)] text-[var(--md-sys-color-tertiary)]' :
-                            member.interest === 'donate' ? 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]' :
-                            'bg-[var(--md-sys-color-surface-dim)] text-[var(--md-sys-color-on-surface-variant)]'
-                          }`}>
-                            {getInterestLabel(member.interest || '')}
-                          </span>
-                          <span className="text-[var(--md-sys-color-on-surface-muted)] hidden sm:inline">
-                            {new Date(member.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
-                          </span>
-                        </div>
+                      {/* Name (left) */}
+                      <h3 className="flex-1 min-w-0 font-medium text-[var(--md-sys-color-on-surface)] truncate">
+                        {member.first_name} {member.last_name}
+                      </h3>
+
+                      {/* Join date (center) & Type (right) */}
+                      <div className="flex items-center gap-3 text-xs">
+                        <span className="text-[var(--md-sys-color-on-surface-muted)] hidden sm:inline">
+                          {new Date(member.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
+                        </span>
+                        <span className={`px-2 py-0.5 rounded-md font-medium ${
+                          member.interest === 'mentor' ? 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]' :
+                          member.interest === 'volunteer' ? 'bg-[var(--md-sys-color-tertiary-container)] text-[var(--md-sys-color-tertiary)]' :
+                          member.interest === 'donate' ? 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]' :
+                          'bg-[var(--md-sys-color-surface-dim)] text-[var(--md-sys-color-on-surface-variant)]'
+                        }`}>
+                          {getInterestLabel(member.interest || '')}
+                        </span>
                       </div>
 
                       {/* Expand indicator */}
@@ -222,22 +222,23 @@ export default function Members() {
                       {user.email?.charAt(0).toUpperCase()}
                     </span>
                   </div>
-                  <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-                    <p className="text-sm font-medium text-[var(--md-sys-color-on-surface)] truncate">
-                      {user.email}
-                    </p>
-                    <div className="flex items-center gap-2 text-xs">
-                      <span className={`px-2 py-0.5 rounded-md font-medium capitalize ${
-                        user.role === 'admin'
-                          ? 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]'
-                          : 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]'
-                      }`}>
-                        {user.role}
-                      </span>
-                      <span className="text-[var(--md-sys-color-on-surface-muted)] hidden sm:inline">
-                        {new Date(user.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
-                      </span>
-                    </div>
+                  {/* Email (left) */}
+                  <p className="flex-1 min-w-0 text-sm font-medium text-[var(--md-sys-color-on-surface)] truncate">
+                    {user.email}
+                  </p>
+
+                  {/* Join date (center) & Role (right) */}
+                  <div className="flex items-center gap-3 text-xs">
+                    <span className="text-[var(--md-sys-color-on-surface-muted)] hidden sm:inline">
+                      {new Date(user.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
+                    </span>
+                    <span className={`px-2 py-0.5 rounded-md font-medium capitalize ${
+                      user.role === 'admin'
+                        ? 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]'
+                        : 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]'
+                    }`}>
+                      {user.role}
+                    </span>
                   </div>
                 </div>
               ))}
