@@ -139,20 +139,20 @@ export default function Members() {
                         {member.first_name} {member.last_name}
                       </h3>
 
-                      {/* Join date (center) & Type (right) */}
-                      <div className="flex items-center gap-3 text-xs">
-                        <span className="text-[var(--md-sys-color-on-surface-muted)] hidden sm:inline">
-                          {new Date(member.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
-                        </span>
-                        <span className={`px-2 py-0.5 rounded-md font-medium ${
-                          member.interest === 'mentor' ? 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]' :
-                          member.interest === 'volunteer' ? 'bg-[var(--md-sys-color-tertiary-container)] text-[var(--md-sys-color-tertiary)]' :
-                          member.interest === 'donate' ? 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]' :
-                          'bg-[var(--md-sys-color-surface-dim)] text-[var(--md-sys-color-on-surface-variant)]'
-                        }`}>
-                          {getInterestLabel(member.interest || '')}
-                        </span>
-                      </div>
+                      {/* Join date column */}
+                      <span className="w-20 text-xs text-[var(--md-sys-color-on-surface-muted)] hidden sm:block text-right">
+                        {new Date(member.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
+                      </span>
+
+                      {/* Type column */}
+                      <span className={`w-20 text-center px-2 py-0.5 rounded-md text-xs font-medium ${
+                        member.interest === 'mentor' ? 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]' :
+                        member.interest === 'volunteer' ? 'bg-[var(--md-sys-color-tertiary-container)] text-[var(--md-sys-color-tertiary)]' :
+                        member.interest === 'donate' ? 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]' :
+                        'bg-[var(--md-sys-color-surface-dim)] text-[var(--md-sys-color-on-surface-variant)]'
+                      }`}>
+                        {getInterestLabel(member.interest || '')}
+                      </span>
                     </button>
 
                     {/* Expandable content */}
@@ -215,19 +215,19 @@ export default function Members() {
                     {user.email}
                   </p>
 
-                  {/* Join date (center) & Role (right) */}
-                  <div className="flex items-center gap-3 text-xs">
-                    <span className="text-[var(--md-sys-color-on-surface-muted)] hidden sm:inline">
-                      {new Date(user.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
-                    </span>
-                    <span className={`px-2 py-0.5 rounded-md font-medium capitalize ${
-                      user.role === 'admin'
-                        ? 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]'
-                        : 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]'
-                    }`}>
-                      {user.role}
-                    </span>
-                  </div>
+                  {/* Join date column */}
+                  <span className="w-20 text-xs text-[var(--md-sys-color-on-surface-muted)] hidden sm:block text-right">
+                    {new Date(user.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
+                  </span>
+
+                  {/* Role column */}
+                  <span className={`w-16 text-center px-2 py-0.5 rounded-md text-xs font-medium capitalize ${
+                    user.role === 'admin'
+                      ? 'bg-[var(--md-sys-color-secondary-container)] text-[var(--md-sys-color-secondary)]'
+                      : 'bg-[var(--md-sys-color-primary-container)] text-[var(--md-sys-color-primary)]'
+                  }`}>
+                    {user.role}
+                  </span>
                 </div>
               ))}
             </div>
