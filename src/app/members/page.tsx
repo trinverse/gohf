@@ -124,8 +124,8 @@ export default function Members() {
                 return (
                   <div key={member.id} className="transition-colors duration-200 hover:bg-[var(--md-sys-color-surface-container-low)]">
                     <button
-                      onClick={() => setExpandedMember(isExpanded ? null : member.id)}
-                      className="w-full px-4 py-3 flex items-center gap-3 text-left"
+                      onClick={() => member.message && setExpandedMember(isExpanded ? null : member.id)}
+                      className={`w-full px-4 py-3 flex items-center gap-3 text-left ${member.message ? 'cursor-pointer' : 'cursor-default'}`}
                     >
                       {/* Avatar */}
                       <div className={`flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br ${getInterestColor(member.interest || '')} flex items-center justify-center`}>
@@ -153,27 +153,15 @@ export default function Members() {
                           {getInterestLabel(member.interest || '')}
                         </span>
                       </div>
-
-                      {/* Expand indicator */}
-                      {member.message && (
-                        <svg
-                          className={`w-5 h-5 text-[var(--md-sys-color-on-surface-muted)] transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      )}
                     </button>
 
                     {/* Expandable content */}
                     {isExpanded && member.message && (
-                      <div className="px-4 pb-4 pt-1 ml-13">
-                        <div className="pl-13 ml-10 p-3 rounded-xl bg-[var(--md-sys-color-surface-container-low)] text-sm text-[var(--md-sys-color-on-surface-variant)] leading-relaxed">
+                      <div className="px-4 pb-4">
+                        <div className="p-3 rounded-xl bg-[var(--md-sys-color-surface-container-low)] text-sm text-[var(--md-sys-color-on-surface-variant)] leading-relaxed">
                           &ldquo;{member.message}&rdquo;
                         </div>
-                        <p className="mt-2 ml-10 text-xs text-[var(--md-sys-color-on-surface-muted)] sm:hidden">
+                        <p className="mt-2 text-xs text-[var(--md-sys-color-on-surface-muted)] sm:hidden">
                           Joined {new Date(member.created_at).toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })}
                         </p>
                       </div>
