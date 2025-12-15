@@ -22,6 +22,14 @@ export const supabaseAdmin = supabaseServiceRoleKey
     })
   : supabase
 
+// Warn if service role key is missing (admin operations will fail)
+if (!supabaseServiceRoleKey && typeof window === 'undefined') {
+  console.warn(
+    '⚠️ SUPABASE_SERVICE_ROLE_KEY is not set! Admin operations (member approvals, etc.) will fail. ' +
+    'Add this key to your environment variables.'
+  )
+}
+
 // Types for our database tables
 export interface Member {
   id?: string
