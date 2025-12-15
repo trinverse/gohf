@@ -32,27 +32,27 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleSignOut = async () => {
+  const handleSignOut = () => {
     console.log('Logout clicked')
     setMobileMenuOpen(false)
 
-    try {
-      // Call signOut and wait for it to complete
-      await signOut()
-      console.log('SignOut completed, redirecting...')
+    // Clear storage synchronously first
+    Object.keys(localStorage).forEach(key => {
+      if (key.startsWith('sb-') || key.includes('supabase') || key.includes('auth')) {
+        localStorage.removeItem(key)
+      }
+    })
+    Object.keys(sessionStorage).forEach(key => {
+      if (key.startsWith('sb-') || key.includes('supabase') || key.includes('auth')) {
+        sessionStorage.removeItem(key)
+      }
+    })
 
-      // Add a small delay to ensure storage is cleared before redirect
-      await new Promise(resolve => setTimeout(resolve, 100))
+    // Call signOut (fire and forget - don't await)
+    signOut().catch(err => console.error('SignOut error:', err))
 
-      // Use replace to prevent back button issues
-      window.location.replace('/')
-    } catch (error) {
-      console.error('Logout error:', error)
-      // Force redirect even on error, but ensure storage is cleared
-      localStorage.clear()
-      sessionStorage.clear()
-      window.location.replace('/')
-    }
+    // Redirect immediately - don't wait for async operations
+    window.location.href = '/'
   }
 
   return (
