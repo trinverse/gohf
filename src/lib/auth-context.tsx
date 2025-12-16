@@ -16,10 +16,18 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
+const ROLE_STORAGE_KEY = 'gohf-user-role'
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [session, setSession] = useState<Session | null>(null)
-  const [role, setRole] = useState<string | null>(null)
+  // Initialize role from localStorage for immediate availability on refresh
+  const [role, setRole] = useState<string | null>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem(ROLE_STORAGE_KEY)
+    }
+    return null
+  })
   const [loading, setLoading] = useState(true)
 
   // Fetch user role from API (bypasses RLS)
@@ -60,6 +68,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setUser(initialSession.user)
           const userRole = await fetchUserRole()
           setRole(userRole)
+          // Persist role to localStorage
+          if (userRole) {
+            localStorage.setItem(ROLE_STORAGE_KEY, userRole)
+          }
+        } else {
+          // No session - clear any stale cached role
+          localStorage.removeItem(ROLE_STORAGE_KEY)
+          setRole(null)
         }
       } catch (error) {
         console.error('Error initializing auth:', error)
@@ -79,7 +95,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (currentSession?.user) {
           const userRole = await fetchUserRole()
           setRole(userRole)
+          // Persist role to localStorage
+          if (userRole) {
+            localStorage.setItem(ROLE_STORAGE_KEY, userRole)
+          }
         } else {
+          // Clear cached role on logout
+          localStorage.removeItem(ROLE_STORAGE_KEY)
           setRole(null)
         }
 
@@ -146,6 +168,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       // Clear ALL storage synchronously BEFORE calling Supabase signOut
       if (typeof window !== 'undefined') {
+        // Clear cached role
+        localStorage.removeItem(ROLE_STORAGE_KEY)
+
         // Clear localStorage
         Object.keys(localStorage).forEach(key => {
           if (key.startsWith('sb-') || key.includes('supabase') || key.includes('auth')) {

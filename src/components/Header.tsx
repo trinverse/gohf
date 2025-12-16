@@ -37,6 +37,7 @@ export default function Header() {
     setMobileMenuOpen(false)
 
     // Clear storage synchronously first
+    localStorage.removeItem('gohf-user-role') // Clear cached role
     Object.keys(localStorage).forEach(key => {
       if (key.startsWith('sb-') || key.includes('supabase') || key.includes('auth')) {
         localStorage.removeItem(key)
