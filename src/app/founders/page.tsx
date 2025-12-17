@@ -74,10 +74,6 @@ export default function Founders() {
                     <p className="mt-4 text-[var(--md-sys-color-on-surface-variant)] leading-relaxed">{founder.bio}</p>
                   </div>
                 </div>
-                {/* Decorative number */}
-                <span className="absolute top-6 right-8 text-8xl font-semibold text-[var(--md-sys-color-surface-container-low)] select-none">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
               </div>
             ))}
           </div>

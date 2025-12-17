@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
+import { supabase, supabaseAdmin } from '@/lib/supabase'
 
 // GET all users
 export async function GET() {
@@ -46,7 +46,8 @@ export async function PATCH(request: NextRequest) {
       )
     }
 
-    const { data, error } = await supabase
+    // Use admin client to bypass RLS for updates
+    const { data, error } = await supabaseAdmin
       .from('users')
       .update({ role })
       .eq('id', id)
@@ -62,6 +63,43 @@ export async function PATCH(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true, data })
+  } catch (error) {
+    console.error('Server error:', error)
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
+  }
+}
+
+// DELETE - Delete a user
+export async function DELETE(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url)
+    const id = searchParams.get('id')
+
+    if (!id) {
+      return NextResponse.json(
+        { error: 'User ID is required' },
+        { status: 400 }
+      )
+    }
+
+    // Use admin client to bypass RLS for deletion
+    const { error } = await supabaseAdmin
+      .from('users')
+      .delete()
+      .eq('id', id)
+
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json(
+        { error: error.message },
+        { status: 400 }
+      )
+    }
+
+    return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Server error:', error)
     return NextResponse.json(

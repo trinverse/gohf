@@ -25,6 +25,8 @@ export default function Admin() {
   const [error, setError] = useState<string | null>(null)
   const [updatingRole, setUpdatingRole] = useState<string | null>(null)
   const [updatingMemberStatus, setUpdatingMemberStatus] = useState<string | null>(null)
+  const [deletingMember, setDeletingMember] = useState<string | null>(null)
+  const [deletingUser, setDeletingUser] = useState<string | null>(null)
 
   const { user, role, loading: authLoading } = useAuth()
   const router = useRouter()
@@ -255,6 +257,56 @@ export default function Admin() {
     }
   }
 
+  const deleteMember = async (memberId: string) => {
+    if (!confirm('Are you sure you want to delete this member? This action cannot be undone.')) {
+      return
+    }
+    setDeletingMember(memberId)
+    try {
+      const response = await fetch(`/api/members?id=${memberId}`, {
+        method: 'DELETE',
+      })
+      const result = await response.json()
+
+      if (result.error) {
+        setError(result.error)
+      } else {
+        // Remove from local state
+        setMembers(members.filter(m => m.id !== memberId))
+      }
+    } catch (err) {
+      console.error('Error deleting member:', err)
+      setError('Failed to delete member')
+    } finally {
+      setDeletingMember(null)
+    }
+  }
+
+  const deleteUser = async (userId: string) => {
+    if (!confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
+      return
+    }
+    setDeletingUser(userId)
+    try {
+      const response = await fetch(`/api/users?id=${userId}`, {
+        method: 'DELETE',
+      })
+      const result = await response.json()
+
+      if (result.error) {
+        setError(result.error)
+      } else {
+        // Remove from local state
+        setUsers(users.filter(u => u.id !== userId))
+      }
+    } catch (err) {
+      console.error('Error deleting user:', err)
+      setError('Failed to delete user')
+    } finally {
+      setDeletingUser(null)
+    }
+  }
+
   const currentTab = tabs.find(t => t.id === activeTab)
 
   const totalDonations = donations.reduce((sum, d) => sum + (d.amount || 0), 0)
@@ -425,6 +477,21 @@ export default function Admin() {
                               </div>
                             )}
                             <StatusBadge status={member.status || 'pending'} />
+                            {/* Delete Button */}
+                            <button
+                              onClick={() => deleteMember(member.id!)}
+                              disabled={deletingMember === member.id}
+                              className="p-2 text-[var(--md-sys-color-on-surface-muted)] hover:text-[var(--md-sys-color-accent)] hover:bg-[var(--md-sys-color-error-container)] rounded-lg transition-all duration-300 disabled:opacity-50"
+                              title="Delete member"
+                            >
+                              {deletingMember === member.id ? (
+                                <div className="w-4 h-4 border-2 border-[var(--md-sys-color-accent)] border-t-transparent rounded-full animate-spin" />
+                              ) : (
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                </svg>
+                              )}
+                            </button>
                           </div>
                         </div>
                         <div className="mt-4 pt-4 border-t border-[var(--md-sys-color-outline-variant)] flex flex-wrap gap-6 text-sm">
@@ -641,10 +708,27 @@ export default function Admin() {
                             {updatingRole === appUser.id && (
                               <div className="w-5 h-5 border-2 border-[var(--md-sys-color-primary)] border-t-transparent rounded-full animate-spin" />
                             )}
+                            {/* Delete Button - not for current user */}
+                            {appUser.id !== user?.id && (
+                              <button
+                                onClick={() => deleteUser(appUser.id)}
+                                disabled={deletingUser === appUser.id}
+                                className="p-2 text-[var(--md-sys-color-on-surface-muted)] hover:text-[var(--md-sys-color-accent)] hover:bg-[var(--md-sys-color-error-container)] rounded-lg transition-all duration-300 disabled:opacity-50"
+                                title="Delete user"
+                              >
+                                {deletingUser === appUser.id ? (
+                                  <div className="w-4 h-4 border-2 border-[var(--md-sys-color-accent)] border-t-transparent rounded-full animate-spin" />
+                                ) : (
+                                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                  </svg>
+                                )}
+                              </button>
+                            )}
                           </div>
                         </div>
                         {appUser.id === user?.id && (
-                          <p className="mt-3 text-xs text-[var(--md-sys-color-on-surface-muted)]">This is your account - role cannot be changed</p>
+                          <p className="mt-3 text-xs text-[var(--md-sys-color-on-surface-muted)]">This is your account - cannot be modified or deleted</p>
                         )}
                       </div>
                     ))}
