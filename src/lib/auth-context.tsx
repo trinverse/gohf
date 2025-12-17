@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
 import { User, Session } from '@supabase/supabase-js'
 import { supabase } from './supabase'
+import { isMobileApp } from './platform'
 
 interface AuthContextType {
   user: User | null
@@ -30,14 +31,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   })
   const [loading, setLoading] = useState(true)
 
-  // Fetch user role from API (bypasses RLS)
+  // Fetch user role - uses direct Supabase on mobile, API route on web
   const fetchUserRole = async () => {
     try {
       const { data: { session } } = await supabase.auth.getSession()
-      if (!session?.access_token) {
+      if (!session?.access_token || !session?.user) {
         return null
       }
 
+      // On mobile app, query Supabase directly (no API routes available)
+      if (isMobileApp()) {
+        const { data, error } = await supabase
+          .from('users')
+          .select('role')
+          .eq('id', session.user.id)
+          .single()
+
+        if (error) {
+          console.error('Error fetching user role from Supabase:', error)
+          return null
+        }
+        return data?.role || null
+      }
+
+      // On web, use API route (can use service role key to bypass RLS)
       const response = await fetch('/api/users/role', {
         headers: {
           'Authorization': `Bearer ${session.access_token}`

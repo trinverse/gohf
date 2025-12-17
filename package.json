@@ -6,8 +6,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:mobile": "rm -rf .next && mv src/app/api src/app/_api_disabled && CAPACITOR_BUILD=true next build; mv src/app/_api_disabled src/app/api",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cap:sync": "npx cap sync",
+    "cap:open:ios": "npx cap open ios",
+    "cap:open:android": "npx cap open android",
+    "mobile:build": "npm run build:mobile && npm run cap:sync",
+    "mobile:ios": "npm run mobile:build && npm run cap:open:ios",
+    "mobile:android": "npm run mobile:build && npm run cap:open:android"
   },
   "repository": {
     "type": "git",
@@ -21,6 +28,12 @@
   },
   "homepage": "https://github.com/trinverse/gohf#readme",
   "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/ios": "^8.0.0",
+    "@capacitor/splash-screen": "^8.0.0",
+    "@capacitor/status-bar": "^8.0.0",
     "@supabase/supabase-js": "^2.87.1",
     "next": "^16.0.10",
     "react": "^19.2.3",

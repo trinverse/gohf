@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // Enable static export for Capacitor mobile builds
+  ...(process.env.CAPACITOR_BUILD && {
+    output: 'export',
+    distDir: 'out',
+  }),
 }
 
 export default nextConfig

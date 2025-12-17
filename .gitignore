@@ -27,3 +27,16 @@ npm-debug.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# Capacitor - iOS
+ios/App/Pods/
+ios/DerivedData/
+ios/*.xcworkspace/xcuserdata/
+
+# Capacitor - Android
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+*.keystore
+*.jks
